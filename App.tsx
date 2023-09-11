@@ -1,13 +1,29 @@
-import { StatusBar } from 'expo-status-bar'
 import React from 'react'
+import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
+import {
+  useFonts,
+  Roboto_400Regular,
+  Roboto_700Bold,
+} from '@expo-google-fonts/roboto'
+import { Baloo2_700Bold } from '@expo-google-fonts/baloo-2'
+import { ThemeProvider } from 'styled-components/native'
+import theme from './src/styles/theme'
+import { Splash } from './src/screens/Splash'
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+    Roboto_700Bold,
+    Baloo2_700Bold,
+  })
+
+  if (!fontsLoaded) return
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider theme={theme}>
+      <Splash />
+    </ThemeProvider>
   )
 }
 
