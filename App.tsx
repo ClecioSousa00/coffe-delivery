@@ -1,6 +1,6 @@
 import React from 'react'
-import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import 'react-native-gesture-handler'
+
 import {
   useFonts,
   Roboto_400Regular,
@@ -9,7 +9,7 @@ import {
 import { Baloo2_700Bold } from '@expo-google-fonts/baloo-2'
 import { ThemeProvider } from 'styled-components/native'
 import theme from './src/styles/theme'
-import { Splash } from './src/screens/Splash'
+import { Routes } from './src/routes'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -22,16 +22,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Splash />
+      <Routes />
     </ThemeProvider>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
