@@ -1,6 +1,13 @@
-import { useEffect } from 'react'
-import { BackHandler } from 'react-native'
 import * as S from './styles'
+
+import { BackHandler, Keyboard, TouchableWithoutFeedback } from 'react-native'
+import { useEffect } from 'react'
+
+import { InputSearch } from '../../components/InputSearch'
+
+import { MapPin, ShoppingCart } from 'phosphor-react-native'
+import theme from '../../styles/theme'
+import grainCoffeeImage from '../../assets/coffe.png'
 
 export const Home = () => {
   useEffect(() => {
@@ -8,5 +15,25 @@ export const Home = () => {
       return true
     })
   }, [])
-  return <S.Container></S.Container>
+  return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <S.Container>
+        <S.Header>
+          <S.HeaderTopInfos>
+            <S.ContentLocal>
+              <MapPin color={theme.colors.purple} size={20} weight="fill" />
+              <S.TextLocal>Porto Alegre, RS</S.TextLocal>
+            </S.ContentLocal>
+            <ShoppingCart color={theme.colors.yellow_dark} weight="fill" />
+          </S.HeaderTopInfos>
+
+          <S.TitleSearch>
+            Encontre o café perfeito para qualquer hora do dia
+          </S.TitleSearch>
+          <InputSearch />
+          <S.ImageGrainCoffee source={grainCoffeeImage} />
+        </S.Header>
+      </S.Container>
+    </TouchableWithoutFeedback>
+  )
 }
