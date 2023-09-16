@@ -7,7 +7,7 @@ export const Container = styled.View`
 export const Header = styled.View`
   background-color: ${({ theme }) => theme.colors.gray_100};
   height: 390px;
-  padding: 72px 32px 0px;
+  padding: 56px 32px 0px;
 `
 export const HeaderTopInfos = styled.View`
   flex-direction: row;
@@ -30,13 +30,13 @@ export const TitleSearch = styled.Text`
   font-family: ${({ theme }) => theme.fonts.balooBold};
   font-size: 20px;
   color: ${({ theme }) => theme.colors.white};
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 15px;
 `
 
 export const ImageGrainCoffee = styled.Image`
   position: absolute;
-  bottom: 35px;
+  bottom: 70px;
   right: 5px;
   z-index: -1;
 `

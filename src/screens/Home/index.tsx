@@ -9,6 +9,7 @@ import { MapPin, ShoppingCart } from 'phosphor-react-native'
 import theme from '../../styles/theme'
 import grainCoffeeImage from '../../assets/coffe.png'
 import { CardCoffee } from '../../components/CardCoffee'
+import { ListCardCoffee } from '../../components/ListCardCoffee'
 
 export const Home = () => {
   useEffect(() => {
@@ -34,7 +35,7 @@ export const Home = () => {
           <InputSearch />
           <S.ImageGrainCoffee source={grainCoffeeImage} />
         </S.Header>
-        <CardCoffee />
+        <ListCardCoffee />
       </S.Container>
     </TouchableWithoutFeedback>
   )
