@@ -1,10 +1,13 @@
 import styled, { css } from 'styled-components/native'
 
 export const Container = styled.View`
-  width: 166px;
-  height: 204px;
+  width: 312px;
+  height: 112px;
+
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   background-color: ${({ theme }) => theme.colors.gray_800};
 
   border-top-left-radius: 6px;
@@ -14,65 +17,51 @@ export const Container = styled.View`
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.gray_700};
 
-  padding: 0px 12px 16px;
-  position: relative;
+  padding: 0px 16px 16px 8px;
 `
 
 export const ImageCoffee = styled.Image`
-  margin-top: -20px;
-  width: 64px;
-  height: 64px;
+  margin-top: -40px;
+  width: 96px;
+  height: 96px;
 `
 
-export const TypeContent = styled.View`
-  background-color: ${({ theme }) => theme.colors.purple_light};
-  padding: 4px 8px;
-  border-radius: 30px;
-  margin: 8px 0px;
+export const Content = styled.View`
+  flex: 1;
 `
 
-export const TextType = styled.Text`
-  ${({ theme }) => css`
-    font-family: ${theme.fonts.robotoBold};
-    font-size: ${theme.text_size.tag}px;
-    color: ${theme.colors.purple_dark};
-  `}
-
-  text-transform: uppercase;
-`
-export const TextName = styled.Text`
+export const Title = styled.Text`
   ${({ theme }) => css`
     font-family: ${theme.fonts.balooBold};
-    font-size: ${theme.title_size.xs}px;
+    font-size: ${theme.title_size.sm}px;
     color: ${theme.colors.gray_200};
   `}
-  text-align: center;
 `
 
-export const TextDescription = styled.Text`
+export const Description = styled.Text`
   ${({ theme }) => css`
     font-family: ${theme.fonts.robotoRegular};
     font-size: ${theme.text_size.xs}px;
     color: ${theme.colors.gray_400};
   `}
-  text-align: center;
 `
 export const ContentPrice = styled.View`
   flex-direction: row;
   align-items: center;
   gap: 2px;
+  margin-top: 8px;
 `
 export const TextPrice = styled.Text`
   ${({ theme }) => css`
     font-family: ${theme.fonts.robotoRegular};
-    font-size: ${theme.text_size.xs}px;
+    font-size: ${theme.text_size.sm}px;
     color: ${theme.colors.yellow_dark};
   `}
 `
 export const NumberPrice = styled.Text`
   ${({ theme }) => css`
     font-family: ${theme.fonts.balooBold};
-    font-size: ${theme.title_size.md}px;
+    font-size: ${theme.text_size.md}px;
     color: ${theme.colors.yellow_dark};
   `}
 `

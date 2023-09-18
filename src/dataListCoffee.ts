@@ -18,7 +18,7 @@ import { DataListCoffeeProps } from './types/dataListCoffeType'
 export const dataListCoffee: DataListCoffeeProps[] = [
   {
     id: 1,
-    type: 'Tradicional',
+    type: 'tradicional',
     name: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
     price: 8.99,
@@ -26,7 +26,7 @@ export const dataListCoffee: DataListCoffeeProps[] = [
   },
   {
     id: 2,
-    type: 'Tradicional',
+    type: 'tradicional',
     name: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
     price: 7.99,
@@ -34,7 +34,7 @@ export const dataListCoffee: DataListCoffeeProps[] = [
   },
   {
     id: 3,
-    type: 'Tradicional',
+    type: 'tradicional',
     name: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
     price: 9.49,
@@ -42,7 +42,7 @@ export const dataListCoffee: DataListCoffeeProps[] = [
   },
   {
     id: 4,
-    type: 'Tradicional',
+    type: 'tradicional',
     name: 'Latte',
     description: 'Café expresso com o dobro de leite e espuma cremosa',
     price: 10.29,
@@ -50,7 +50,7 @@ export const dataListCoffee: DataListCoffeeProps[] = [
   },
   {
     id: 5,
-    type: 'Tradicional',
+    type: 'tradicional',
     name: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
     price: 8.79,
@@ -58,7 +58,7 @@ export const dataListCoffee: DataListCoffeeProps[] = [
   },
   {
     id: 6,
-    type: 'Tradicional',
+    type: 'tradicional',
     name: 'Café com Leite',
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
     price: 9.99,
@@ -66,7 +66,7 @@ export const dataListCoffee: DataListCoffeeProps[] = [
   },
   {
     id: 7,
-    type: 'Tradicional',
+    type: 'tradicional',
     name: 'Macchiato',
     description:
       'Café expresso misturado com um pouco de leite quente e espuma',
@@ -75,7 +75,7 @@ export const dataListCoffee: DataListCoffeeProps[] = [
   },
   {
     id: 8,
-    type: 'Doce',
+    type: 'doce',
     name: 'Cappuccino',
     description: 'Bebida com canela feita de doses de café, leite e espuma',
     price: 8.49,
@@ -83,7 +83,7 @@ export const dataListCoffee: DataListCoffeeProps[] = [
   },
   {
     id: 9,
-    type: 'Doce',
+    type: 'doce',
     name: 'Mocaccino',
     description: 'Café expresso com calda de chocolate, pouco leite e espuma',
     price: 9.59,
@@ -91,7 +91,7 @@ export const dataListCoffee: DataListCoffeeProps[] = [
   },
   {
     id: 10,
-    type: 'Doce',
+    type: 'doce',
     name: 'Chocolate Quente',
     description: 'Bebida feita com chocolate dissolvido no leite quente e café',
     price: 7.89,
@@ -99,7 +99,7 @@ export const dataListCoffee: DataListCoffeeProps[] = [
   },
   {
     id: 11,
-    type: 'Especial',
+    type: 'especial',
     name: 'Cubano',
     description:
       'Drink gelado de café expresso com rum, creme de leite e hortelã',
@@ -108,7 +108,7 @@ export const dataListCoffee: DataListCoffeeProps[] = [
   },
   {
     id: 12,
-    type: 'Especial',
+    type: 'especial',
     name: 'Havaiano',
     description: 'Bebida adocicada preparada com café e leite de coco',
     price: 10.99,
@@ -116,7 +116,7 @@ export const dataListCoffee: DataListCoffeeProps[] = [
   },
   {
     id: 13,
-    type: 'Especial',
+    type: 'especial',
     name: 'Árabe',
     description: 'Bebida preparada com grãos de café árabe e especiarias',
     price: 12.79,
@@ -124,7 +124,7 @@ export const dataListCoffee: DataListCoffeeProps[] = [
   },
   {
     id: 14,
-    type: 'Especial',
+    type: 'especial',
     name: 'Irlandês',
     description: 'Bebida a base de café, uísque irlandês, açúcar e Chantilly',
     price: 13.49,

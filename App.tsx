@@ -1,7 +1,6 @@
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import React from 'react'
 import { StatusBar } from 'react-native'
-
-import 'react-native-gesture-handler'
 
 import {
   useFonts,
@@ -25,13 +24,15 @@ export default function App() {
   if (!fontsLoaded) return
 
   return (
-    <ThemeProvider theme={theme}>
-      <StatusBar
-        translucent
-        barStyle="light-content"
-        backgroundColor={theme.colors.gray_100}
-      />
-      <Routes />
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ThemeProvider theme={theme}>
+        <StatusBar
+          translucent
+          barStyle="light-content"
+          backgroundColor="transparent"
+        />
+        <Routes />
+      </ThemeProvider>
+    </GestureHandlerRootView>
   )
 }

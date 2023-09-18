@@ -1,13 +1,13 @@
 import styled from 'styled-components/native'
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.gray_900};
 `
 export const Header = styled.View`
   background-color: ${({ theme }) => theme.colors.gray_100};
   height: 390px;
-  padding: 56px 32px 0px;
+  padding: 56px 32px 44px;
 `
 export const HeaderTopInfos = styled.View`
   flex-direction: row;

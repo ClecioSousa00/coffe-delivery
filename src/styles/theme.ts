@@ -28,4 +28,19 @@ export default {
     robotoBold: 'Roboto_700Bold',
     balooBold: 'Baloo2_700Bold',
   },
+  title_size: {
+    xl: 36,
+    lg: 24,
+    md: 20,
+    sm: 16,
+    xs: 14,
+  },
+  text_size: {
+    lg: 20,
+    md: 16,
+    sm: 14,
+    xs: 12,
+    tag: 10,
+    button: 14,
+  },
 }

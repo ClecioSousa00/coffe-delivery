@@ -1,10 +1,6 @@
 import * as S from './styles'
 
-import DropShadow from 'react-native-drop-shadow'
-
 import { DataListCoffeeProps } from '../../types/dataListCoffeType'
-
-import theme from '../../styles/theme'
 
 type CardCoffeeProps = {
   data: DataListCoffeeProps

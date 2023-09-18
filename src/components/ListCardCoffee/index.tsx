@@ -16,7 +16,8 @@ export const ListCardCoffee = () => {
         contentContainerStyle={{
           paddingTop: 20,
           paddingVertical: 10,
-          marginHorizontal: 32,
+          marginLeft: 32,
+          paddingRight: 32,
         }}
         ItemSeparatorComponent={() => <View style={{ width: 32 }} />}
       />
