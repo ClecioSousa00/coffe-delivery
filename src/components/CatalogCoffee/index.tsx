@@ -1,32 +1,28 @@
 import * as S from './styles'
-import { ButtonCategoryCoffee } from '../ButtonCategoryCoffee'
-import { CatalogListCoffee } from '../CatalogListCoffee'
 import { useEffect, useState } from 'react'
-import { SectionList } from 'react-native'
+import { SectionList, View } from 'react-native'
 
-import { dataListCoffee } from '../../dataListCoffee'
-import { DataListCoffeeProps } from '../../types/dataListCoffeType'
+import { ButtonCategoryCoffee } from '../ButtonCategoryCoffee'
+import { CardCatalogCoffee } from '../CardCatalogCoffee'
 
-type SectionListProps = {
-  title: string
-  data: DataListCoffeeProps[]
-}
+import { groupDataByType } from '../../utils/groupDatabyType'
+
+import { CatalogDataList } from '../../types/dataListCoffeType'
 
 export const CatalogCoffee = () => {
-  const [dataCoffee, setDataCoffee] = useState<SectionListProps | []>([])
+  const [dataCoffee, setDataCoffee] = useState<CatalogDataList[] | []>([])
   const [typeCoffee, setTypeCoffee] = useState<string | null>(null)
 
-  const title = {
+  const singularToPlural = {
     tradicional: 'tradicionais',
     doce: 'doces',
     especial: 'especiais',
   }
 
-  // useEffect(() => {
-  //   const newDataCoffee = Object.entries(dataListCoffee).forEach((key, value) =>
-  //     console.log(key, value),
-  //   )
-  // }, [])
+  useEffect(() => {
+    const data = groupDataByType()
+    setDataCoffee(data)
+  }, [])
 
   return (
     <S.Container>
@@ -37,19 +33,20 @@ export const CatalogCoffee = () => {
         <ButtonCategoryCoffee text="especiais" />
       </S.ContainerButtonCategory>
 
-      <CatalogListCoffee
-        title="tradicionais"
-        type="tradicional"
-        data={dataListCoffee}
+      <SectionList
+        sections={dataCoffee}
+        keyExtractor={(item) => String(item.id)}
+        showsVerticalScrollIndicator={false}
+        scrollEnabled={false}
+        contentContainerStyle={{ paddingVertical: 32 }}
+        renderItem={({ item }) => <CardCatalogCoffee data={item} />}
+        renderSectionHeader={({ section: { title } }) => (
+          <S.CategoryText>{singularToPlural[title]}</S.CategoryText>
+        )}
+        ItemSeparatorComponent={() => (
+          <View style={{ marginBottom: 32 }}></View>
+        )}
       />
-      <CatalogListCoffee title="doces" type="doce" data={dataListCoffee} />
-      <CatalogListCoffee
-        title="especiais"
-        type="especial"
-        data={dataListCoffee}
-      />
-      {/* <CatalogListCoffee title="doces" data={listCoffeeSweet} />
-      <CatalogListCoffee title="especiais" data={listCoffeeSpecial} /> */}
     </S.Container>
   )
 }

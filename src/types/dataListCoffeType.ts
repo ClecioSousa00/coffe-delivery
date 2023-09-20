@@ -14,3 +14,8 @@ export type DataListCoffeeProps = {
   price: number
   image: ImageSourcePropType
 }
+
+export type CatalogDataList = {
+  title: string
+  data: DataListCoffeeProps[]
+}

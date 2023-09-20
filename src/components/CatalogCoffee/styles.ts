@@ -1,4 +1,4 @@
-import styled from 'styled-components/native'
+import styled, { css } from 'styled-components/native'
 
 export const Container = styled.View`
   padding: 0px 32px;
@@ -15,4 +15,14 @@ export const ContainerButtonCategory = styled.View`
   flex-direction: row;
   gap: 12px;
   margin-top: 12px;
+`
+
+export const CategoryText = styled.Text`
+  ${({ theme }) => css`
+    font-family: ${theme.fonts.balooBold};
+    font-size: ${theme.title_size.xs}px;
+    color: ${theme.colors.gray_400};
+  `}
+  text-transform: capitalize;
+  margin-bottom: 32px;
 `

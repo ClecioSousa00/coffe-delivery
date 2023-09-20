@@ -1,6 +1,6 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import React from 'react'
-import { StatusBar } from 'react-native'
+import { StatusBar, SafeAreaView } from 'react-native'
 
 import {
   useFonts,
@@ -26,12 +26,14 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ThemeProvider theme={theme}>
-        <StatusBar
-          translucent
-          barStyle="light-content"
-          backgroundColor="transparent"
-        />
-        <Routes />
+        <SafeAreaView style={{ flex: 1 }}>
+          <StatusBar
+            translucent
+            barStyle="light-content"
+            backgroundColor="transparent"
+          />
+          <Routes />
+        </SafeAreaView>
       </ThemeProvider>
     </GestureHandlerRootView>
   )
