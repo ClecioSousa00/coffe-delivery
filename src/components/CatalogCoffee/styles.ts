@@ -24,5 +24,5 @@ export const CategoryText = styled.Text`
     color: ${theme.colors.gray_400};
   `}
   text-transform: capitalize;
-  margin-bottom: 32px;
+  margin: 48px 0px 32px;
 `

@@ -3,24 +3,22 @@ import {
   CatalogDataList,
 } from '../types/dataListCoffeType'
 
-import { dataListCoffee } from '../dataListCoffee'
-
-export const groupDataByType = () => {
+export const groupDataByType = (data: DataListCoffeeProps[]) => {
   const groupedData: { [key: string]: DataListCoffeeProps[] } = {}
 
-  dataListCoffee.forEach((item) => {
+  data.forEach((item) => {
     if (!groupedData[item.type]) {
       groupedData[item.type] = []
     }
     groupedData[item.type].push(item)
   })
 
-  const data: CatalogDataList[] = Object.entries(groupedData).map(
+  const newData: CatalogDataList[] = Object.entries(groupedData).map(
     ([key, value]) => ({
       title: key,
       data: value,
     }),
   )
 
-  return data
+  return newData
 }
