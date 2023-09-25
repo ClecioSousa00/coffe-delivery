@@ -17,6 +17,7 @@ export const CardCatalogCoffee = ({ data }: Props) => {
         },
         shadowOpacity: 0.6,
       }}
+      activeOpacity={0.7}
     >
       <S.ImageCoffee source={data.image} />
       <S.Content>

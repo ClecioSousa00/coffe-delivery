@@ -5,24 +5,29 @@ import {
 
 import { Home } from '../screens/Home'
 import { Splash } from '../screens/Splash'
-
-const { Navigator, Screen } = createNativeStackNavigator()
+import { Product } from '../screens/Product'
 
 type StackNavigationProps = {
   home: undefined
   splash: undefined
+  product: undefined
 }
-export type StackType = NativeStackNavigationProp<StackNavigationProps>
+export type StackRoutesProps = NativeStackNavigationProp<StackNavigationProps>
+const { Navigator, Screen } = createNativeStackNavigator<StackNavigationProps>()
 
 export const StackNavigation = () => {
   return (
-    <Navigator screenOptions={{ headerShown: false }}>
+    <Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="product"
+    >
       <Screen name="splash" component={Splash} />
       <Screen
         name="home"
         component={Home}
         options={{ gestureEnabled: false }}
       />
+      <Screen name="product" component={Product} />
     </Navigator>
   )
 }

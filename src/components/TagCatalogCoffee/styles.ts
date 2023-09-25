@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/native'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, Text } from 'react-native'
 
 type Props = {
   isActive: boolean
@@ -15,9 +15,11 @@ export const ButtonCategory = styled(TouchableOpacity)<Props>`
   `}
 `
 
-export const TextButton = styled.Text`
+export const TextButton = styled(Text)<Props>`
   font-family: ${({ theme }) => theme.fonts.robotoBold};
   font-size: ${({ theme }) => theme.text_size.tag}px;
-  color: ${({ theme }) => theme.colors.purple_dark};
   text-transform: uppercase;
+  ${({ theme, isActive }) => css`
+    color: ${isActive ? theme.colors.purple_dark : theme.colors.white};
+  `}
 `

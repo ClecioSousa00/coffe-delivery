@@ -14,7 +14,7 @@ export const TagCatalogCoffee = ({
 }: ButtonProps) => {
   return (
     <S.ButtonCategory activeOpacity={0.7} isActive={isActive} {...rest}>
-      <S.TextButton>{text}</S.TextButton>
+      <S.TextButton isActive={isActive}>{text}</S.TextButton>
     </S.ButtonCategory>
   )
 }
