@@ -2,14 +2,34 @@ import * as S from './styles'
 
 import { useTheme } from 'styled-components/native'
 
-import { ArrowLeft, ShoppingCart } from 'phosphor-react-native'
+import { ArrowLeft, ShoppingCart, Minus, Plus } from 'phosphor-react-native'
 
 import coffee from '../../assets/Coffee.png'
-import { ButtonOptionsSelect } from '../../ButtonOptionsSelect'
+import { ButtonOptionsSelect } from '../../components/ButtonOptionsSelect'
+import { Button } from '../../components/Button'
+import { useState } from 'react'
 
 export const Product = () => {
+  const [optionSelected, setOptionSelected] = useState('')
+  const [quantityCoffee, setQuantityCoffee] = useState(1)
   const theme = useTheme()
   const options = ['114ml', '140ml', '227ml']
+
+  const handleSelectedOption = (item: string) => {
+    if (item === optionSelected) {
+      setOptionSelected('')
+      return
+    }
+    setOptionSelected(item)
+  }
+
+  const handleQuantityCoffee = (type: 'sum' | 'minus') => {
+    if (type === 'sum') setQuantityCoffee((prevState) => prevState + 1)
+
+    if (type === 'minus' && quantityCoffee > 1) {
+      setQuantityCoffee((prevState) => prevState - 1)
+    }
+  }
 
   return (
     <S.Container>
@@ -43,9 +63,26 @@ export const Product = () => {
         <S.FooterText>Selecione o tamanho:</S.FooterText>
         <S.ContainerOptions>
           {options.map((item) => (
-            <ButtonOptionsSelect text={item} key={item} />
+            <ButtonOptionsSelect
+              isSelected={optionSelected === item}
+              text={item}
+              key={item}
+              onPress={() => handleSelectedOption(item)}
+            />
           ))}
         </S.ContainerOptions>
+        <S.ContainerInput>
+          <S.ContentInput>
+            <S.ButtonInput onPress={() => handleQuantityCoffee('minus')}>
+              <Minus color={theme.colors.purple} size={20} />
+            </S.ButtonInput>
+            <S.InputNumber>{quantityCoffee}</S.InputNumber>
+            <S.ButtonInput onPress={() => handleQuantityCoffee('sum')}>
+              <Plus color={theme.colors.purple} size={20} />
+            </S.ButtonInput>
+          </S.ContentInput>
+          <Button text="adicionar" />
+        </S.ContainerInput>
       </S.Footer>
     </S.Container>
   )

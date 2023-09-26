@@ -95,3 +95,26 @@ export const ContainerOptions = styled.View`
   justify-content: space-between;
   margin-top: 8px;
 `
+export const ContainerInput = styled.View`
+  background-color: ${({ theme }) => theme.colors.gray_700};
+  border-radius: 6px;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding: 8px;
+  margin-top: 20px;
+`
+export const ContentInput = styled.View`
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+`
+export const ButtonInput = styled.TouchableOpacity``
+
+export const InputNumber = styled.Text`
+  ${({ theme }) => css`
+    font-family: ${theme.fonts.robotoRegular};
+    font-size: ${theme.text_size.md}px;
+    color: ${theme.colors.gray_100};
+  `}
+`
