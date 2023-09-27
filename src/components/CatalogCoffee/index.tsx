@@ -2,16 +2,14 @@ import * as S from './styles'
 import { useEffect, useState } from 'react'
 import { SectionList, View } from 'react-native'
 
-import { TagCatalogCoffee } from '../TagCatalogCoffee'
-import { CardCatalogCoffee } from '../CardCatalogCoffee'
+import { TagCatalogCoffee } from '@/components/TagCatalogCoffee'
+import { CardCatalogCoffee } from '@/components/CardCatalogCoffee'
 
-import { groupDataByType } from '../../utils/groupDatabyType'
+import { groupDataByType } from '@/utils/groupDatabyType'
 
-import {
-  CatalogDataList,
-  DataListCoffeeProps,
-} from '../../types/dataListCoffeType'
-import { dataListCoffee } from '../../dataListCoffee'
+import { CatalogDataList, DataListCoffeeProps } from '@/types/dataListCoffeType'
+
+import { dataListCoffee } from '@/dataListCoffee'
 
 const singularToPlural = {
   tradicional: 'tradicionais',
@@ -78,16 +76,16 @@ export const CatalogCoffee = () => {
       <SectionList
         sections={dataCatalogCoffee}
         keyExtractor={(item) => String(item.id)}
-        showsVerticalScrollIndicator={false}
-        scrollEnabled={false}
         contentContainerStyle={{ paddingBottom: 32 }}
         renderItem={({ item }) => <CardCatalogCoffee data={item} />}
-        renderSectionHeader={({ section: { title } }) => (
-          <S.CategoryText>{singularToPlural[title]}</S.CategoryText>
+        renderSectionHeader={({ section }) => (
+          <S.CategoryText>{singularToPlural[section.title]}</S.CategoryText>
         )}
         ItemSeparatorComponent={() => (
           <View style={{ marginBottom: 32 }}></View>
         )}
+        showsVerticalScrollIndicator={false}
+        scrollEnabled={false}
       />
     </S.Container>
   )

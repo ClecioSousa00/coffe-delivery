@@ -1,10 +1,11 @@
 import * as S from './styles'
 
-import { dataListCoffee } from '../../dataListCoffee'
-import { CardCoffee } from '../CardCoffee'
 import { View } from 'react-native'
 
-export const ListCardCoffee = () => {
+import { dataListCoffee } from '@/dataListCoffee'
+import { CardCoffee } from '@/components/CardCoffee'
+
+export const ListCardHighLight = () => {
   return (
     <S.Container>
       <S.ListCard

@@ -9,6 +9,9 @@
     "splash": {
       "image": "./assets/splash.png",
       "backgroundColor": "#4B2995"
+    },
+    "experiments": {
+      "tsconfigPaths": true
     }
   }
 }

@@ -1,5 +1,5 @@
-import { PressableProps } from 'react-native'
 import * as S from './styles'
+import { PressableProps } from 'react-native'
 
 type Props = {
   isSelected: boolean

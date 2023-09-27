@@ -1,5 +1,5 @@
-import { RectButtonProps } from 'react-native-gesture-handler'
 import * as S from './styles'
+import { RectButtonProps } from 'react-native-gesture-handler'
 
 // export type Props = {
 //   variant:

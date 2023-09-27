@@ -17,10 +17,7 @@ const { Navigator, Screen } = createNativeStackNavigator<StackNavigationProps>()
 
 export const StackNavigation = () => {
   return (
-    <Navigator
-      screenOptions={{ headerShown: false }}
-      initialRouteName="product"
-    >
+    <Navigator screenOptions={{ headerShown: false }}>
       <Screen name="splash" component={Splash} />
       <Screen
         name="home"

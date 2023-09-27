@@ -1,6 +1,10 @@
-import styled from 'styled-components/native'
+import styled, { css } from 'styled-components/native'
+import { View } from 'react-native'
+import { InputSearchProps } from '.'
 
-export const Container = styled.View`
+type Props = Pick<InputSearchProps, 'isFocus'>
+
+export const Container = styled(View)<Props>`
   width: 100%;
   height: 52px;
   flex-direction: row;
@@ -9,6 +13,11 @@ export const Container = styled.View`
   padding: 0px 12px;
   background-color: ${({ theme }) => theme.colors.gray_200};
   border-radius: 4px;
+  ${({ theme, isFocus }) =>
+    isFocus &&
+    css`
+      border: 1px solid ${theme.colors.gray_300};
+    `}
 `
 
 export const Input = styled.TextInput`

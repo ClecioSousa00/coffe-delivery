@@ -1,5 +1,5 @@
-import { DataListCoffeeProps } from '../../types/dataListCoffeType'
 import * as S from './styles'
+import { DataListCoffeeProps } from '@/types/dataListCoffeType'
 
 type Props = {
   data: DataListCoffeeProps

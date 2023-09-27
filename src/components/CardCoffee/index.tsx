@@ -1,6 +1,6 @@
 import * as S from './styles'
 
-import { DataListCoffeeProps } from '../../types/dataListCoffeType'
+import { DataListCoffeeProps } from '@/types/dataListCoffeType'
 
 type CardCoffeeProps = {
   data: DataListCoffeeProps

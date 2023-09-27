@@ -1,22 +1,33 @@
 import * as S from './styles'
 
+import { useEffect, useState } from 'react'
 import { BackHandler, Keyboard, TouchableWithoutFeedback } from 'react-native'
-import { useEffect } from 'react'
 
-import { InputSearch } from '../../components/InputSearch'
+import { InputSearch } from '@/components/InputSearch'
+import { ListCardHighLight } from '@/components/ListCardHighlight'
+import { CatalogCoffee } from '@/components/CatalogCoffee'
 
 import { MapPin, ShoppingCart } from 'phosphor-react-native'
-import theme from '../../styles/theme'
-import grainCoffeeImage from '../../assets/coffe.png'
-import { ListCardCoffee } from '../../components/ListCardCoffee'
-import { CatalogCoffee } from '../../components/CatalogCoffee'
+import grainCoffeeImage from '@/assets/coffe.png'
+import theme from '@/styles/theme'
 
 export const Home = () => {
+  const [isFocused, setIsFocused] = useState(false)
+
+  const handleFocusInput = () => {
+    setIsFocused((prevState) => !prevState)
+  }
+
+  const handleBlurInput = () => {
+    setIsFocused(false)
+  }
+
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', () => {
       return true
     })
   }, [])
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <S.Container>
@@ -32,10 +43,14 @@ export const Home = () => {
           <S.TitleSearch>
             Encontre o café perfeito para qualquer hora do dia
           </S.TitleSearch>
-          <InputSearch />
+          <InputSearch
+            isFocus={isFocused}
+            onFocus={() => handleFocusInput()}
+            onBlur={() => handleBlurInput()}
+          />
           <S.ImageGrainCoffee source={grainCoffeeImage} />
         </S.Header>
-        <ListCardCoffee />
+        <ListCardHighLight />
         <CatalogCoffee />
       </S.Container>
     </TouchableWithoutFeedback>
