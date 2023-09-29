@@ -19,10 +19,8 @@ export const ContentHeader = styled.View`
 
 export const TagContent = styled.View`
   border-radius: 100px;
-  padding: 6px;
-  align-items: center;
-  justify-content: center;
-  width: 70px;
+  padding: 6px 12px;
+  align-self: flex-start;
   background-color: ${({ theme }) => theme.colors.gray_200};
   margin-bottom: 12px;
   margin-top: 38px;

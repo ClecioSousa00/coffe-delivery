@@ -10,7 +10,7 @@ import { Product } from '../screens/Product'
 type StackNavigationProps = {
   home: undefined
   splash: undefined
-  product: undefined
+  product: { id: number }
 }
 export type StackRoutesProps = NativeStackNavigationProp<StackNavigationProps>
 const { Navigator, Screen } = createNativeStackNavigator<StackNavigationProps>()

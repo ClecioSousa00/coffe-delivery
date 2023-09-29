@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/native'
 
-export const Container = styled.View`
+export const Container = styled.Pressable`
   width: 166px;
   height: 204px;
   align-items: center;
@@ -13,9 +13,7 @@ export const Container = styled.View`
   border-bottom-left-radius: 36px;
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.gray_700};
-
   padding: 0px 12px 16px;
-  position: relative;
 `
 
 export const ImageCoffee = styled.Image`

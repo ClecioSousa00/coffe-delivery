@@ -1,12 +1,17 @@
+import { useNavigation } from '@react-navigation/native'
 import * as S from './styles'
 
 import { DataListCoffeeProps } from '@/types/dataListCoffeType'
+import { StackRoutesProps } from '@/routes/stack.routes'
+import { Tag } from '@/Tag'
 
-type CardCoffeeProps = {
+type Props = {
   data: DataListCoffeeProps
 }
 
-export const CardCoffee = ({ data }: CardCoffeeProps) => {
+export const CardCoffee = ({ data }: Props) => {
+  const navigation = useNavigation<StackRoutesProps>()
+
   return (
     <S.Container
       style={{
@@ -18,11 +23,13 @@ export const CardCoffee = ({ data }: CardCoffeeProps) => {
         },
         shadowOpacity: 0.6,
       }}
+      onPress={() => navigation.navigate('product', { id: data.id })}
     >
       <S.ImageCoffee source={data.image} />
-      <S.TypeContent>
+      <Tag tagName={data.type} />
+      {/* <S.TypeContent>
         <S.TextType>{data.type}</S.TextType>
-      </S.TypeContent>
+      </S.TypeContent> */}
       <S.TextName>{data.name}</S.TextName>
       <S.TextDescription>{data.description}</S.TextDescription>
       <S.ContentPrice>

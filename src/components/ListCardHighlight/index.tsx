@@ -1,15 +1,33 @@
 import * as S from './styles'
 
 import { View } from 'react-native'
+import { useEffect, useState } from 'react'
 
-import { dataListCoffee } from '@/dataListCoffee'
 import { CardCoffee } from '@/components/CardCoffee'
 
-export const ListCardHighLight = () => {
+import { DataListCoffeeProps } from '@/types/dataListCoffeType'
+import { dataListCoffee } from '@/dataListCoffee'
+
+type Props = {
+  data: DataListCoffeeProps[]
+}
+
+export const ListCardHighLight = ({ data }: Props) => {
+  const [dataList, setDataList] = useState(dataListCoffee)
+
+  useEffect(() => {
+    setDataList(data)
+  }, [data])
+
+  useEffect(() => {
+    const shuffleData = dataListCoffee.sort((a, b) => Math.random() - 0.5)
+    setDataList(shuffleData)
+  }, [])
+
   return (
     <S.Container>
       <S.ListCard
-        data={dataListCoffee}
+        data={dataList}
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item }) => <CardCoffee data={item} />}
         horizontal={true}
@@ -18,7 +36,7 @@ export const ListCardHighLight = () => {
           paddingTop: 20,
           paddingVertical: 10,
           marginLeft: 32,
-          paddingRight: 32,
+          paddingRight: 62,
         }}
         ItemSeparatorComponent={() => <View style={{ width: 32 }} />}
       />

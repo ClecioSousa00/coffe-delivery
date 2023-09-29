@@ -1,13 +1,18 @@
+import { useNavigation } from '@react-navigation/native'
 import * as S from './styles'
 import { DataListCoffeeProps } from '@/types/dataListCoffeType'
+import { StackRoutesProps } from '@/routes/stack.routes'
 
 type Props = {
   data: DataListCoffeeProps
 }
 
 export const CardCatalogCoffee = ({ data }: Props) => {
+  const navigation = useNavigation<StackRoutesProps>()
+
   return (
     <S.Container
+      onPress={() => navigation.navigate('product', { id: data.id })}
       style={{
         elevation: 3,
         shadowColor: '#000',

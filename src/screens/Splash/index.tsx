@@ -10,14 +10,15 @@ import Animated, {
   runOnJS,
 } from 'react-native-reanimated'
 
-import Logo from '../../assets/logo.svg'
-import LogoName from '../../assets/logoName.svg'
 import { useNavigation } from '@react-navigation/native'
-import { StackType } from '../../routes/stack.routes'
+import { StackRoutesProps } from '@/routes/stack.routes'
+
+import Logo from '@/assets/logo.svg'
+import LogoName from '@/assets/logoName.svg'
 
 export const Splash = () => {
   const splashAnimation = useSharedValue(0)
-  const navigation = useNavigation<StackType>()
+  const navigation = useNavigation<StackRoutesProps>()
   const { width: screenWidth, height: screenHeight } = Dimensions.get('screen')
   const logoStyle = useAnimatedStyle(() => {
     return {
