@@ -102,17 +102,3 @@ export const ContainerInput = styled.View`
   padding: 8px;
   margin-top: 20px;
 `
-export const ContentInput = styled.View`
-  flex-direction: row;
-  align-items: center;
-  gap: 24px;
-`
-export const ButtonInput = styled.TouchableOpacity``
-
-export const InputNumber = styled.Text`
-  ${({ theme }) => css`
-    font-family: ${theme.fonts.robotoRegular};
-    font-size: ${theme.text_size.md}px;
-    color: ${theme.colors.gray_100};
-  `}
-`

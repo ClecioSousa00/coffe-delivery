@@ -13,6 +13,7 @@ import { ThemeProvider } from 'styled-components/native'
 import theme from './src/styles/theme'
 
 import { Routes } from './src/routes'
+import { Cart } from '@/screens/Cart'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -32,7 +33,8 @@ export default function App() {
             barStyle="light-content"
             backgroundColor="transparent"
           />
-          <Routes />
+          {/* <Routes /> */}
+          <Cart />
         </SafeAreaView>
       </ThemeProvider>
     </GestureHandlerRootView>

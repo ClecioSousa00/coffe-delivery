@@ -8,7 +8,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import { useTheme } from 'styled-components/native'
 
-import { ArrowLeft, ShoppingCart, Minus, Plus } from 'phosphor-react-native'
+import { ArrowLeft, ShoppingCart } from 'phosphor-react-native'
 
 import { ButtonOptionsSelect } from '@/components/ButtonOptionsSelect'
 import { Button } from '@/components/Button'
@@ -18,18 +18,23 @@ import coffee from '../../assets/Coffee.png'
 import { dataListCoffee } from '@/dataListCoffee'
 import { DataListCoffeeProps } from '@/types/dataListCoffeType'
 import { Tag } from '@/Tag'
+import { ButtonCounter } from '@/components/ButtonCounter'
 
 type ParamsProps = {
   id: number
 }
-const options = ['114ml', '140ml', '227ml']
+
+const sizeCoffee = [114, 140, 227]
 
 export const Product = () => {
-  const [optionSelected, setOptionSelected] = useState('')
+  const [optionSelected, setOptionSelected] = useState<number | null>(null)
   const [quantityCoffee, setQuantityCoffee] = useState(1)
   const [dataCoffee, setDataCoffee] = useState<DataListCoffeeProps>(
     {} as DataListCoffeeProps,
   )
+  const [priceSizeMediumCoffee, setPriceSizeMediumCoffee] = useState<
+    number | null
+  >(null)
 
   const navigation = useNavigation()
   const route = useRoute()
@@ -37,12 +42,16 @@ export const Product = () => {
 
   const { id } = route.params as ParamsProps
 
-  const handleSelectedOption = (item: string) => {
+  const handleSelectedOption = (item: number) => {
     if (item === optionSelected) {
-      setOptionSelected('')
+      setOptionSelected(null)
+      setDataCoffee({ ...dataCoffee, price: priceSizeMediumCoffee })
       return
     }
     setOptionSelected(item)
+    const newPrice = (priceSizeMediumCoffee / sizeCoffee[1]) * item
+
+    setDataCoffee({ ...dataCoffee, price: Number(newPrice.toFixed(2)) })
   }
 
   const handleIncrementCoffee = () => {
@@ -53,8 +62,9 @@ export const Product = () => {
   }
 
   useEffect(() => {
-    const SelectedProductForId = dataListCoffee.find((item) => item.id === id)
-    setDataCoffee({ ...SelectedProductForId })
+    const selectedProductForId = dataListCoffee.find((item) => item.id === id)
+    setDataCoffee({ ...selectedProductForId })
+    setPriceSizeMediumCoffee(selectedProductForId.price)
   }, [id])
 
   return (
@@ -91,25 +101,21 @@ export const Product = () => {
       <S.Footer>
         <S.FooterText>Selecione o tamanho:</S.FooterText>
         <S.ContainerOptions>
-          {options.map((item) => (
+          {sizeCoffee.map((item) => (
             <ButtonOptionsSelect
-              isSelected={optionSelected === item}
-              text={item}
               key={item}
+              isSelected={optionSelected === item}
+              size={item}
               onPress={() => handleSelectedOption(item)}
             />
           ))}
         </S.ContainerOptions>
         <S.ContainerInput>
-          <S.ContentInput>
-            <S.ButtonInput onPress={() => handleDecrementCoffee()}>
-              <Minus color={theme.colors.purple} size={20} />
-            </S.ButtonInput>
-            <S.InputNumber>{quantityCoffee}</S.InputNumber>
-            <S.ButtonInput onPress={() => handleIncrementCoffee()}>
-              <Plus color={theme.colors.purple} size={20} />
-            </S.ButtonInput>
-          </S.ContentInput>
+          <ButtonCounter
+            quantity={quantityCoffee}
+            handleIncrement={handleIncrementCoffee}
+            handleDecrement={handleDecrementCoffee}
+          />
           <Button text="adicionar" />
         </S.ContainerInput>
       </S.Footer>
