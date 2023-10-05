@@ -12,13 +12,15 @@ import { ArrowLeft, ShoppingCart } from 'phosphor-react-native'
 
 import { ButtonOptionsSelect } from '@/components/ButtonOptionsSelect'
 import { Button } from '@/components/Button'
+import { ButtonCounter } from '@/components/ButtonCounter'
+import { Tag } from '@/Tag'
 
 import coffee from '../../assets/Coffee.png'
 
 import { dataListCoffee } from '@/dataListCoffee'
 import { DataListCoffeeProps } from '@/types/dataListCoffeType'
-import { Tag } from '@/Tag'
-import { ButtonCounter } from '@/components/ButtonCounter'
+import { StackRoutesProps } from '@/routes/stack.routes'
+import { ButtonCart } from '@/components/ButtonCart'
 
 type ParamsProps = {
   id: number
@@ -28,6 +30,7 @@ const sizeCoffee = [114, 140, 227]
 
 export const Product = () => {
   const [optionSelected, setOptionSelected] = useState<number | null>(null)
+
   const [quantityCoffee, setQuantityCoffee] = useState(1)
   const [dataCoffee, setDataCoffee] = useState<DataListCoffeeProps>(
     {} as DataListCoffeeProps,
@@ -36,7 +39,7 @@ export const Product = () => {
     number | null
   >(null)
 
-  const navigation = useNavigation()
+  const navigation = useNavigation<StackRoutesProps>()
   const route = useRoute()
   const theme = useTheme()
 
@@ -61,6 +64,10 @@ export const Product = () => {
     setQuantityCoffee((prevState) => prevState - 1)
   }
 
+  const handleAddProductToCart = () => {
+    navigation.navigate('cart')
+  }
+
   useEffect(() => {
     const selectedProductForId = dataListCoffee.find((item) => item.id === id)
     setDataCoffee({ ...selectedProductForId })
@@ -74,7 +81,7 @@ export const Product = () => {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <ArrowLeft color={theme.colors.white} size={24} />
           </TouchableOpacity>
-          <ShoppingCart color={theme.colors.yellow_dark} weight="fill" />
+          <ButtonCart />
         </S.ContentHeader>
 
         <Tag tagName={dataCoffee.type} grayBackground tagColor />
@@ -116,7 +123,11 @@ export const Product = () => {
             handleIncrement={handleIncrementCoffee}
             handleDecrement={handleDecrementCoffee}
           />
-          <Button text="adicionar" />
+          <Button
+            disable={optionSelected !== null}
+            text="adicionar"
+            onPress={() => handleAddProductToCart()}
+          />
         </S.ContainerInput>
       </S.Footer>
     </S.Container>

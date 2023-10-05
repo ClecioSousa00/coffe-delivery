@@ -19,10 +19,10 @@ export const ListCardHighLight = ({ data }: Props) => {
     setDataList(data)
   }, [data])
 
-  useEffect(() => {
-    const shuffleData = dataListCoffee.sort((a, b) => Math.random() - 0.5)
-    setDataList(shuffleData)
-  }, [])
+  // useEffect(() => {
+  //   const shuffleData = dataListCoffee.sort((a, b) => Math.random() - 0.5)
+  //   setDataList(shuffleData)
+  // }, [])
 
   return (
     <S.Container>

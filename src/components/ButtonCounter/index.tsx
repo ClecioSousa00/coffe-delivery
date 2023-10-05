@@ -1,5 +1,5 @@
-import { Minus, Plus } from 'phosphor-react-native'
 import * as S from './styles'
+import { Minus, Plus } from 'phosphor-react-native'
 import { useTheme } from 'styled-components/native'
 
 type Props = {

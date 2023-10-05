@@ -12,11 +12,12 @@ import { RectButtonProps } from 'react-native-gesture-handler'
 export type Props = {
   color?: string
   text: string
+  disable?: boolean
 } & RectButtonProps
 
-export const Button = ({ color, text, ...rest }: Props) => {
+export const Button = ({ color, text, disable = true, ...rest }: Props) => {
   return (
-    <S.Button color={color} {...rest}>
+    <S.Button enabled={disable} color={color} {...rest}>
       <S.Text>{text}</S.Text>
     </S.Button>
   )
