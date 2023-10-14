@@ -13,6 +13,7 @@ import grainCoffeeImage from '@/assets/coffe.png'
 import theme from '@/styles/theme'
 
 import { dataListCoffee } from '@/dataListCoffee'
+import { ButtonCart } from '@/components/ButtonCart'
 
 export const Home = () => {
   const [isFocused, setIsFocused] = useState(false)
@@ -53,7 +54,7 @@ export const Home = () => {
               <MapPin color={theme.colors.purple} size={20} weight="fill" />
               <S.TextLocal>Porto Alegre, RS</S.TextLocal>
             </S.ContentLocal>
-            <ShoppingCart color={theme.colors.yellow_dark} weight="fill" />
+            <ButtonCart />
           </S.HeaderTopInfos>
 
           <S.TitleSearch>
