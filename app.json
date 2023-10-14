@@ -3,6 +3,7 @@
     "name": "coffe-delivery",
     "slug": "coffe-delivery",
     "version": "1.0.0",
+    "orientation": "portrait",
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -13,5 +14,6 @@
     "experiments": {
       "tsconfigPaths": true
     }
+
   }
 }

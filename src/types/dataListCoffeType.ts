@@ -19,3 +19,9 @@ export type CatalogDataList = {
   title: string
   data: DataListCoffeeProps[]
 }
+
+export type ProductStorage = {
+  data: DataListCoffeeProps
+  quantity: number
+  size: number
+}
