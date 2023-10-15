@@ -1,6 +1,6 @@
 import * as S from './styles'
 
-import { ActivityIndicator, FlatList } from 'react-native'
+import { FlatList, StatusBar } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
 
@@ -12,37 +12,25 @@ import { ArrowLeft } from 'phosphor-react-native'
 import { useTheme } from 'styled-components/native'
 import { useEffect, useState } from 'react'
 import { ProductStorage } from '@/types/dataListCoffeType'
-import { getAllProductsStorage } from '@/storage/productCart/getAllProductsStorage'
+
+import { useProductsStorage } from '@/contexts/contextProductsStorage'
 
 export const Cart = () => {
   const theme = useTheme()
   const navigation = useNavigation()
-  const [products, setProducts] = useState<ProductStorage[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+
   const [productsPriceTotal, setProductsPriceTotal] = useState<number | null>(
     null,
   )
+  const { dataProductsCart } = useProductsStorage()
+  console.log(dataProductsCart)
 
   const calculateProductsPriceTotal = (products: ProductStorage[]) => {
     const totalPrice = products.reduce((acc, product) => {
       const price = product.data.price * product.quantity
       return price + acc
     }, 0)
-    return totalPrice
-  }
-
-  const getProductStorage = async () => {
-    setIsLoading(true)
-    try {
-      const storageProducts = await getAllProductsStorage()
-      setProducts(storageProducts)
-      const totalPrice = calculateProductsPriceTotal(storageProducts)
-      setProductsPriceTotal(Number(totalPrice.toFixed(2)))
-    } catch (error) {
-      console.log('erro ao pegar produtos no storage', error)
-    } finally {
-      setIsLoading(false)
-    }
+    setProductsPriceTotal(totalPrice)
   }
 
   const handleProductsPriceTotal = (price: number) => {
@@ -51,32 +39,35 @@ export const Cart = () => {
   }
 
   useEffect(() => {
-    getProductStorage()
-  }, [])
+    calculateProductsPriceTotal(dataProductsCart)
+    console.log(calculateProductsPriceTotal(dataProductsCart))
+  }, [dataProductsCart])
 
   return (
     <S.Container>
+      <StatusBar
+        translucent
+        barStyle="dark-content"
+        backgroundColor="transparent"
+      />
       <S.Header>
         <S.ButtonBack onPress={() => navigation.goBack()}>
           <ArrowLeft color={theme.colors.gray_100} />
         </S.ButtonBack>
         <S.Title>Carrinho</S.Title>
       </S.Header>
-      {isLoading ? (
-        <ActivityIndicator size="large" />
-      ) : (
-        <FlatList
-          data={products}
-          keyExtractor={(item) => String(item.data.id)}
-          renderItem={({ item }) => (
-            <CartProduct
-              product={item}
-              handleTotalPrice={handleProductsPriceTotal}
-            />
-          )}
-          contentContainerStyle={{ paddingBottom: 162 }}
-        />
-      )}
+
+      <FlatList
+        data={dataProductsCart}
+        keyExtractor={(item) => String(item.data.id)}
+        renderItem={({ item }) => (
+          <CartProduct
+            product={item}
+            handleTotalPrice={handleProductsPriceTotal}
+          />
+        )}
+        contentContainerStyle={{ paddingBottom: 162 }}
+      />
 
       <S.Footer
         style={{

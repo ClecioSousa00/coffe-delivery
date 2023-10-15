@@ -2,11 +2,12 @@ import { Trash } from 'phosphor-react-native'
 import { ButtonCounter } from '../ButtonCounter'
 import * as S from './styles'
 
-import img from '@/assets/Image-1.png'
 import { useTheme } from 'styled-components/native'
 import { ButtonIcon } from '../ButtonIcon'
 import { ProductStorage } from '@/types/dataListCoffeType'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useProductsStorage } from '@/contexts/contextProductsStorage'
+import { saveAllProductsStorage } from '@/storage/productCart/saveAllProductStorage'
 
 type Props = {
   product: ProductStorage
@@ -16,39 +17,32 @@ type Props = {
 export const CartProduct = ({ product, handleTotalPrice }: Props) => {
   const theme = useTheme()
   const [quantity, setQuantity] = useState(product.quantity)
-  // const [priceCoffee, setPriceCoffee] = useState(product.data.price)
+  const { dataProductsCart, setProductCart } = useProductsStorage()
 
   const handleIncrementCoffee = () => {
     setQuantity((prevState) => prevState + 1)
     handleTotalPrice(product.data.price)
-
-    // const newPrice = product.data.price + priceCoffee
-    // setPriceCoffee(Number(newPrice.toFixed(2)))
   }
 
   const handleDecrementCoffee = () => {
     if (quantity === 1) return
     setQuantity((prevState) => prevState - 1)
     handleTotalPrice(product.data.price * -1)
-
-    // const newPrice = priceCoffee - product.data.price
-    // setPriceCoffee(Number(newPrice.toFixed(2)))
   }
 
-  // useEffect(() => {
-  //   const price = Number((product.data.price * quantity).toFixed(2))
-
-  //   handleTotalPrice(price)
-  // }, [quantity])
-
-  // useEffect(() => {
-  //   if (product.quantity > 1) {
-  //     const newPrice = product.data.price * quantity
-  //     setPriceCoffee(Number(newPrice.toFixed(2)))
-  //   }
-  // }, [quantity])
-
   const price = Number((product.data.price * quantity).toFixed(2))
+
+  const handleRemoveProduct = async (id: number) => {
+    const productsFiltered = dataProductsCart.filter(
+      (product) => product.data.id !== id,
+    )
+    setProductCart(productsFiltered)
+    try {
+      await saveAllProductsStorage(productsFiltered)
+    } catch (error) {
+      console.log('erro ao remover produto da lista')
+    }
+  }
 
   return (
     <S.Container>
@@ -65,7 +59,10 @@ export const CartProduct = ({ product, handleTotalPrice }: Props) => {
             handleDecrement={() => handleDecrementCoffee()}
             handleIncrement={() => handleIncrementCoffee()}
           />
-          <ButtonIcon isSelected>
+          <ButtonIcon
+            isSelected
+            onPress={() => handleRemoveProduct(product.data.id)}
+          >
             <Trash color={theme.colors.purple} size={20} />
           </ButtonIcon>
         </S.ContentFooter>

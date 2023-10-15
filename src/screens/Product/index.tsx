@@ -22,6 +22,7 @@ import { dataListCoffee } from '@/dataListCoffee'
 import { DataListCoffeeProps, ProductStorage } from '@/types/dataListCoffeType'
 import { StackRoutesProps } from '@/routes/stack.routes'
 import { saveProductStorage } from '@/storage/productCart/saveProductStorage'
+import { useProductsStorage } from '@/contexts/contextProductsStorage'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { PRODUCT_STORAGE_KEY } from '@/storage/storageConfig'
 
@@ -33,19 +34,12 @@ const sizeCoffee = [114, 140, 227]
 
 export const Product = () => {
   const [optionSelected, setOptionSelected] = useState<number | null>(null)
-
   const [quantityCoffee, setQuantityCoffee] = useState(1)
-
   const [dataCoffee, setDataCoffee] = useState<DataListCoffeeProps>(
     {} as DataListCoffeeProps,
   )
-  const [priceSizeMediumCoffee, setPriceSizeMediumCoffee] = useState<
-    number | null
-  >(null)
-
   const [priceCoffee, setPriceCoffee] = useState<number | null>(null)
-
-  const [priceBaseSize, setPriceBaseSize] = useState<number | null>(null)
+  const { dataProductsCart, setProductCart } = useProductsStorage()
 
   const navigation = useNavigation<StackRoutesProps>()
   const route = useRoute()
@@ -57,36 +51,21 @@ export const Product = () => {
     if (size === optionSelected) {
       setOptionSelected(null)
       setPriceCoffee(dataCoffee.price)
-      // setQuantityCoffee(1)
       return
     }
     setOptionSelected(size)
     const newPrice = (dataCoffee.price / sizeCoffee[1]) * size
     setPriceCoffee(Number(newPrice.toFixed(2)))
-
-    // setDataCoffee({ ...dataCoffee, price: Number(newPrice.toFixed(2)) })
-    // setQuantityCoffee(1)
   }
 
   const handleIncrementCoffee = () => {
     setQuantityCoffee((prevState) => prevState + 1)
-
-    // const newPrice = dataCoffee.price + priceCoffee
-    // setPriceCoffee(Number(newPrice.toFixed(2)))
   }
 
   const handleDecrementCoffee = () => {
     if (quantityCoffee === 1) return
     setQuantityCoffee((prevState) => prevState - 1)
-    // console.log(quantityCoffee - 1)
-    // const newPrice = priceCoffee - dataCoffee.price
-    // setPriceCoffee(Number(newPrice.toFixed(2)))
   }
-
-  // const calculateNewPrice = () => {
-  //   const newPrice = dataCoffee.price * quantityCoffee
-  //   setDataCoffee({ ...dataCoffee, price: newPrice })
-  // }
 
   const handleAddProductToCart = async () => {
     const newProduct: ProductStorage = {
@@ -94,6 +73,7 @@ export const Product = () => {
       quantity: quantityCoffee,
       size: optionSelected,
     }
+    setProductCart([...dataProductsCart, newProduct])
     try {
       await saveProductStorage(newProduct)
     } catch (error) {
@@ -111,9 +91,7 @@ export const Product = () => {
   useEffect(() => {
     const selectedProductForId = dataListCoffee.find((item) => item.id === id)
     setDataCoffee({ ...selectedProductForId })
-    // setPriceSizeMediumCoffee(selectedProductForId.price)
     setPriceCoffee(selectedProductForId.price)
-    setPriceBaseSize(selectedProductForId.price)
     // removeProductStorage()
   }, [id])
 
@@ -127,13 +105,7 @@ export const Product = () => {
           </TouchableOpacity>
           <ButtonCart />
         </S.ContentHeader>
-
         <Tag tagName={dataCoffee.type} grayBackground tagColor />
-
-        {/* <S.TagContent>
-          <S.TagText>{dataCoffee.type}</S.TagText>
-        </S.TagContent> */}
-
         <S.ContentHeader>
           <S.NameCoffee>{dataCoffee.name}</S.NameCoffee>
           <S.ContentPrice>
