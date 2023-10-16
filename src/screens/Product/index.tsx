@@ -140,7 +140,7 @@ export const Product = () => {
             handleDecrement={() => handleDecrementCoffee()}
           />
           <Button
-            disable={optionSelected !== null}
+            isSelected={optionSelected === null}
             text="adicionar"
             onPress={() => handleAddProductToCart()}
           />
