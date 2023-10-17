@@ -21,39 +21,13 @@ import { Input } from '@/components/Form/Input'
 import { ButtonPayment } from '@/components/ButtonPayment'
 import { Button } from '@/components/Button'
 
-import { useForm } from 'react-hook-form'
-
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-
 import { useTheme } from 'styled-components/native'
 
-const userAddressSchema = z.object({
-  zipCode: z
-    .string({ required_error: 'CEP não informado' })
-    .min(9, 'Informe um CEP válido'),
-  street: z.string({ required_error: 'Informe uma rua' }),
-  number: z.string({ required_error: 'Informe um número' }),
-  district: z.string({ required_error: 'Informe o seu bairro' }),
-  state: z.string({ required_error: 'Informe um estado' }),
-  city: z.string({ required_error: 'Informe uma cidade' }),
-})
-
-type FormProps = z.infer<typeof userAddressSchema>
+import { useCep } from '@/hooks/useCep'
 
 export const Address = () => {
   const theme = useTheme()
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormProps>({
-    resolver: zodResolver(userAddressSchema),
-  })
-
-  const handleSubmitForm = (data: FormProps) => {
-    console.log(data)
-  }
+  const { errors, control, handleSubmit, handleSubmitForm } = useCep()
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -65,6 +39,7 @@ export const Address = () => {
         />
         <S.Container>
           <HeaderScreen title="Endereço de Entrega" />
+
           <S.ContainerTitle>
             <MapPin color={theme.colors.yellow} size={20} />
             <S.ContentText>

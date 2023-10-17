@@ -18,8 +18,6 @@ export const Input = <FormType extends FieldValues>({
   control,
   ...rest
 }: UseControllerProps<FormType> & InputProps) => {
-  console.log('error', !!error)
-
   return (
     <View>
       <Controller
