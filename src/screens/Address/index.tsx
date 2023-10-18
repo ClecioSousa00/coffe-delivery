@@ -1,6 +1,6 @@
 import * as S from './styles'
 
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Keyboard,
   StatusBar,
@@ -28,6 +28,11 @@ import { useCep } from '@/hooks/useCep'
 export const Address = () => {
   const theme = useTheme()
   const { errors, control, handleSubmit, handleSubmitForm } = useCep()
+  const [paymentType, setPaymentType] = useState('')
+
+  const handleSelectedPaymentMethod = (type: 'credit' | 'debit' | 'money') => {
+    setPaymentType(type)
+  }
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -110,13 +115,25 @@ export const Address = () => {
           </S.ContainerTitle>
 
           <S.ContainerButton>
-            <ButtonPayment text="cartão de crédito">
+            <ButtonPayment
+              text="cartão de crédito"
+              isActive={paymentType === 'credit'}
+              onPress={() => handleSelectedPaymentMethod('credit')}
+            >
               <CreditCard color={theme.colors.purple} size={16} />
             </ButtonPayment>
-            <ButtonPayment text="cartão de débito">
+            <ButtonPayment
+              text="cartão de débito"
+              isActive={paymentType === 'debit'}
+              onPress={() => handleSelectedPaymentMethod('debit')}
+            >
               <Bank color={theme.colors.purple} size={16} />
             </ButtonPayment>
-            <ButtonPayment text="dinheiro">
+            <ButtonPayment
+              text="dinheiro"
+              isActive={paymentType === 'money'}
+              onPress={() => handleSelectedPaymentMethod('money')}
+            >
               <Money color={theme.colors.purple} size={16} />
             </ButtonPayment>
           </S.ContainerButton>

@@ -34,7 +34,7 @@ export const ContainerButton = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 10px;
+  margin-top: 20px;
 `
 export const Footer = styled.View`
   padding: 28px 32px;
