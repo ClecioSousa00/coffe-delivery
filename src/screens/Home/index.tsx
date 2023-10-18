@@ -7,7 +7,7 @@ import { InputSearch } from '@/components/InputSearch'
 import { ListCardHighLight } from '@/components/ListCardHighlight'
 import { CatalogCoffee } from '@/components/CatalogCoffee'
 
-import { MapPin, ShoppingCart } from 'phosphor-react-native'
+import { MapPin } from 'phosphor-react-native'
 
 import grainCoffeeImage from '@/assets/coffe.png'
 import theme from '@/styles/theme'

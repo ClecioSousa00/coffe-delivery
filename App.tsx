@@ -14,6 +14,7 @@ import theme from './src/styles/theme'
 
 import { Routes } from './src/routes'
 import { ProductCartProvider } from '@/contexts/contextProductsStorage'
+import { Address } from '@/screens/Address'
 
 export default function App() {
   const [fontsLoaded] = useFonts({

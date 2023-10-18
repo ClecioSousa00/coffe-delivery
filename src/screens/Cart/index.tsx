@@ -1,23 +1,23 @@
 import * as S from './styles'
 
-import { FlatList, StatusBar } from 'react-native'
+import { FlatList, StatusBar, View } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
 
 import { CartProduct } from '@/components/CartProduct'
 import { Button } from '@/components/Button'
 
-import { ArrowLeft } from 'phosphor-react-native'
-
 import { useTheme } from 'styled-components/native'
 import { useEffect, useState } from 'react'
 import { ProductStorage } from '@/types/dataListCoffeType'
 
 import { useProductsStorage } from '@/contexts/contextProductsStorage'
+import { StackRoutesProps } from '@/routes/stack.routes'
+import { HeaderScreen } from '@/components/HeaderScreen'
 
 export const Cart = () => {
   const theme = useTheme()
-  const navigation = useNavigation()
+  const navigation = useNavigation<StackRoutesProps>()
 
   const [productsPriceTotal, setProductsPriceTotal] = useState<number | null>(
     null,
@@ -50,13 +50,9 @@ export const Cart = () => {
         barStyle="dark-content"
         backgroundColor="transparent"
       />
-      <S.Header>
-        <S.ButtonBack onPress={() => navigation.goBack()}>
-          <ArrowLeft color={theme.colors.gray_100} />
-        </S.ButtonBack>
-        <S.Title>Carrinho</S.Title>
-      </S.Header>
-
+      <View style={{ paddingHorizontal: 32 }}>
+        <HeaderScreen title="Carrinho" />
+      </View>
       <FlatList
         data={dataProductsCart}
         keyExtractor={(item) => String(item.data.id)}
@@ -84,7 +80,11 @@ export const Cart = () => {
           <S.TitleFooter>Valor Total</S.TitleFooter>
           <S.Price>R$ {productsPriceTotal && productsPriceTotal}</S.Price>
         </S.ContentHeader>
-        <Button text="confirmar pedido" color={theme.colors.yellow_dark} />
+        <Button
+          onPress={() => navigation.navigate('address')}
+          text="confirmar pedido"
+          color={theme.colors.yellow_dark}
+        />
       </S.Footer>
     </S.Container>
   )

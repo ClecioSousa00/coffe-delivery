@@ -1,3 +1,4 @@
+import { TouchableOpacityProps } from 'react-native'
 import * as S from './styles'
 import { RectButtonProps } from 'react-native-gesture-handler'
 
@@ -12,12 +13,12 @@ import { RectButtonProps } from 'react-native-gesture-handler'
 export type Props = {
   color?: string
   text: string
-  disable?: boolean
-} & RectButtonProps
+  isSelected?: boolean
+} & TouchableOpacityProps
 
-export const Button = ({ color, text, disable = true, ...rest }: Props) => {
+export const Button = ({ color, text, isSelected = false, ...rest }: Props) => {
   return (
-    <S.Button enabled={disable} color={color} {...rest}>
+    <S.Button disabled={isSelected} color={color} {...rest}>
       <S.Text>{text}</S.Text>
     </S.Button>
   )
