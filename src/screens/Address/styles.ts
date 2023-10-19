@@ -33,7 +33,7 @@ export const Subtitle = styled.Text`
 export const ContainerButton = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 16px;
   margin-top: 20px;
 `
 export const Footer = styled.View`
@@ -44,7 +44,7 @@ export const Footer = styled.View`
   background-color: ${({ theme }) => theme.colors.white};
 `
 export const Form = styled.View`
-  margin-top: 16px;
+  margin-top: 20px;
   gap: 16px;
 `
 export const ContainerInput = styled.View`

@@ -1,3 +1,4 @@
+import { View } from 'react-native'
 import styled, { css } from 'styled-components/native'
 
 export const Container = styled.View`
@@ -38,6 +39,21 @@ export const ContentHeader = styled.View`
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
+`
+export const ContainerEmptyMessage = styled.View`
+  align-items: center;
+  justify-content: center;
+  padding: 0px 64px;
+  margin-top: 84px;
+`
+
+export const TextEmptyMessage = styled.Text`
+  ${({ theme }) => css`
+    font-family: ${theme.fonts.robotoRegular};
+    font-size: ${theme.text_size.sm}px;
+    color: ${theme.colors.gray_400};
+    margin: 16px 0px 32px;
+  `}
 `
 
 export const TitleFooter = styled.Text`

@@ -1,5 +1,5 @@
-import { ReactNode } from 'react'
 import * as S from './styles'
+import { ReactNode } from 'react'
 import { TouchableOpacityProps } from 'react-native'
 
 export type ButtonIconProps = {

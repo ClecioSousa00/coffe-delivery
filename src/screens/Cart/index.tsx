@@ -14,6 +14,7 @@ import { ProductStorage } from '@/types/dataListCoffeType'
 import { useProductsStorage } from '@/contexts/contextProductsStorage'
 import { StackRoutesProps } from '@/routes/stack.routes'
 import { HeaderScreen } from '@/components/HeaderScreen'
+import { ShoppingCart } from 'phosphor-react-native'
 
 export const Cart = () => {
   const theme = useTheme()
@@ -23,7 +24,6 @@ export const Cart = () => {
     null,
   )
   const { dataProductsCart } = useProductsStorage()
-  console.log(dataProductsCart)
 
   const calculateProductsPriceTotal = (products: ProductStorage[]) => {
     const totalPrice = products.reduce((acc, product) => {
@@ -39,8 +39,8 @@ export const Cart = () => {
   }
 
   useEffect(() => {
+    if (!dataProductsCart.length) return
     calculateProductsPriceTotal(dataProductsCart)
-    console.log(calculateProductsPriceTotal(dataProductsCart))
   }, [dataProductsCart])
 
   return (
@@ -50,42 +50,55 @@ export const Cart = () => {
         barStyle="dark-content"
         backgroundColor="transparent"
       />
-      <View style={{ paddingHorizontal: 32 }}>
+      <View style={{ paddingHorizontal: 32, marginBottom: 28 }}>
         <HeaderScreen title="Carrinho" />
       </View>
-      <FlatList
-        data={dataProductsCart}
-        keyExtractor={(item) => String(item.data.id)}
-        renderItem={({ item }) => (
-          <CartProduct
-            product={item}
-            handleTotalPrice={handleProductsPriceTotal}
+      {dataProductsCart.length ? (
+        <>
+          <FlatList
+            data={dataProductsCart}
+            keyExtractor={(item) => String(item.data.id)}
+            renderItem={({ item }) => (
+              <CartProduct
+                product={item}
+                handleTotalPrice={handleProductsPriceTotal}
+              />
+            )}
+            contentContainerStyle={{ paddingBottom: 162 }}
           />
-        )}
-        contentContainerStyle={{ paddingBottom: 162 }}
-      />
 
-      <S.Footer
-        style={{
-          elevation: 20,
-          shadowColor: '#000',
-          shadowOffset: {
-            height: 20,
-            width: 0,
-          },
-          shadowOpacity: 0.1,
-        }}
-      >
-        <S.ContentHeader>
-          <S.TitleFooter>Valor Total</S.TitleFooter>
-          <S.Price>R$ {productsPriceTotal && productsPriceTotal}</S.Price>
-        </S.ContentHeader>
-        <Button
-          onPress={() => navigation.navigate('address')}
-          text="confirmar pedido"
-          color={theme.colors.yellow_dark}
-        />
-      </S.Footer>
+          <S.Footer
+            style={{
+              elevation: 20,
+              shadowColor: '#000',
+              shadowOffset: {
+                height: 20,
+                width: 0,
+              },
+              shadowOpacity: 0.1,
+            }}
+          >
+            <S.ContentHeader>
+              <S.TitleFooter>Valor Total</S.TitleFooter>
+              <S.Price>R$ {productsPriceTotal}</S.Price>
+            </S.ContentHeader>
+            <Button
+              onPress={() => navigation.navigate('address')}
+              text="confirmar pedido"
+              color={theme.colors.yellow_dark}
+            />
+          </S.Footer>
+        </>
+      ) : (
+        <S.ContainerEmptyMessage>
+          <ShoppingCart color={theme.colors.gray_500} weight="fill" />
+          <S.TextEmptyMessage>Seu carrinho está vazio</S.TextEmptyMessage>
+          <Button
+            text="ver catálogo"
+            onPress={() => navigation.navigate('home')}
+          />
+        </S.ContainerEmptyMessage>
+      )}
     </S.Container>
   )
 }

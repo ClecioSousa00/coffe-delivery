@@ -98,7 +98,6 @@ export const ContainerInput = styled.View`
   border-radius: 6px;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
   padding: 8px;
   margin-top: 20px;
 `

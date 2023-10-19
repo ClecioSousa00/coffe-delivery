@@ -25,6 +25,7 @@ import { saveProductStorage } from '@/storage/productCart/saveProductStorage'
 import { useProductsStorage } from '@/contexts/contextProductsStorage'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { PRODUCT_STORAGE_KEY } from '@/storage/storageConfig'
+import { View } from 'react-native'
 
 type ParamsProps = {
   id: number
@@ -68,6 +69,11 @@ export const Product = () => {
   }
 
   const handleAddProductToCart = async () => {
+    const productIsExists = dataProductsCart.some(
+      (product) => product.data.id === dataCoffee.id,
+    )
+    if (productIsExists) return
+
     const newProduct: ProductStorage = {
       data: { ...dataCoffee, price: priceCoffee },
       quantity: quantityCoffee,
@@ -139,11 +145,13 @@ export const Product = () => {
             handleIncrement={() => handleIncrementCoffee()}
             handleDecrement={() => handleDecrementCoffee()}
           />
-          <Button
-            isSelected={optionSelected === null}
-            text="adicionar"
-            onPress={() => handleAddProductToCart()}
-          />
+          <View style={{ flex: 1 }}>
+            <Button
+              isSelected={optionSelected === null}
+              text="adicionar"
+              onPress={() => handleAddProductToCart()}
+            />
+          </View>
         </S.ContainerInput>
       </S.Footer>
     </S.Container>

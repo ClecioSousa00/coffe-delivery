@@ -1,6 +1,6 @@
 import * as S from './styles'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { BackHandler, Keyboard, TouchableWithoutFeedback } from 'react-native'
 
 import { InputSearch } from '@/components/InputSearch'
@@ -14,11 +14,17 @@ import theme from '@/styles/theme'
 
 import { dataListCoffee } from '@/dataListCoffee'
 import { ButtonCart } from '@/components/ButtonCart'
+import { useFocusEffect } from '@react-navigation/native'
+import { getAddressStorage } from '@/storage/addressStorage/getAddressStorage'
+import { AddressStorageProps } from '@/types/addressStorage'
 
 export const Home = () => {
   const [isFocused, setIsFocused] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const [dataList, setDataList] = useState(dataListCoffee)
+  const [address, setAddress] = useState<AddressStorageProps>(
+    {} as AddressStorageProps,
+  )
 
   const handleFocusInput = () => {
     setIsFocused((prevState) => !prevState)
@@ -45,6 +51,21 @@ export const Home = () => {
     })
   }, [])
 
+  const getAddressAsyncStorage = async () => {
+    try {
+      const addressStorage = await getAddressStorage()
+      setAddress(addressStorage)
+    } catch (error) {
+      console.log('erro ao buscar endereço no storage')
+    }
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      getAddressAsyncStorage()
+    }, []),
+  )
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <S.Container>
@@ -52,7 +73,9 @@ export const Home = () => {
           <S.HeaderTopInfos>
             <S.ContentLocal>
               <MapPin color={theme.colors.purple} size={20} weight="fill" />
-              <S.TextLocal>Porto Alegre, RS</S.TextLocal>
+              {address.city && (
+                <S.TextLocal>{`${address.city}, ${address.state}`}</S.TextLocal>
+              )}
             </S.ContentLocal>
             <ButtonCart />
           </S.HeaderTopInfos>

@@ -61,6 +61,7 @@ export const Address = () => {
               name="zipCode"
               size="medium"
               placeholder="Cep"
+              keyboardType="numeric"
               error={errors.zipCode && errors.zipCode?.message}
             />
             <Input

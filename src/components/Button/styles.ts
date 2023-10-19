@@ -20,8 +20,8 @@ type ButtonProps = Pick<Props, 'color' | 'disabled'>
 
 export const Button = styled(TouchableOpacity)<ButtonProps>`
   ${({ theme, color, disabled }) => css`
-    flex: 1;
     height: 46px;
+    width: 100%;
     align-items: center;
     justify-content: center;
     border-radius: 6px;
