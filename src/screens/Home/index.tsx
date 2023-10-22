@@ -2,10 +2,13 @@ import * as S from './styles'
 
 import { useCallback, useEffect, useState } from 'react'
 import { BackHandler, Keyboard, TouchableWithoutFeedback } from 'react-native'
+import { useFocusEffect } from '@react-navigation/native'
+import Animated, { FadeInDown } from 'react-native-reanimated'
 
 import { InputSearch } from '@/components/InputSearch'
-import { ListCardHighLight } from '@/components/ListCardHighlight'
-import { CatalogCoffee } from '@/components/CatalogCoffee'
+import { ListCardHighLight } from './components/ListCardHighlight'
+import { CatalogCoffee } from './components/CatalogCoffee'
+import { ButtonCart } from '@/components/ButtonCart'
 
 import { MapPin } from 'phosphor-react-native'
 
@@ -13,8 +16,6 @@ import grainCoffeeImage from '@/assets/coffe.png'
 import theme from '@/styles/theme'
 
 import { dataListCoffee } from '@/dataListCoffee'
-import { ButtonCart } from '@/components/ButtonCart'
-import { useFocusEffect } from '@react-navigation/native'
 import { getAddressStorage } from '@/storage/addressStorage/getAddressStorage'
 import { AddressStorageProps } from '@/types/addressStorage'
 
@@ -68,7 +69,7 @@ export const Home = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <S.Container>
+      <S.Container showsVerticalScrollIndicator={false}>
         <S.Header>
           <S.HeaderTopInfos>
             <S.ContentLocal>
@@ -94,7 +95,9 @@ export const Home = () => {
           <S.ImageGrainCoffee source={grainCoffeeImage} />
         </S.Header>
         <ListCardHighLight data={dataList} />
-        <CatalogCoffee />
+        <Animated.View entering={FadeInDown.delay(300)}>
+          <CatalogCoffee />
+        </Animated.View>
       </S.Container>
     </TouchableWithoutFeedback>
   )

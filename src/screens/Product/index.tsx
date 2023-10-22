@@ -14,7 +14,7 @@ import { ButtonOptionsSelect } from '@/components/ButtonOptionsSelect'
 import { Button } from '@/components/Button'
 import { ButtonCounter } from '@/components/ButtonCounter'
 import { ButtonCart } from '@/components/ButtonCart'
-import { Tag } from '@/Tag'
+import { Tag } from '@/components/Tag'
 
 import coffee from '../../assets/Coffee.png'
 

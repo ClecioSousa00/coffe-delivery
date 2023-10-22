@@ -1,20 +1,27 @@
 import * as S from './styles'
 
-import { FlatList, StatusBar, View } from 'react-native'
+import { FlatList, ScrollView, StatusBar, View } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
 
-import { CartProduct } from '@/components/CartProduct'
+import { CartProduct } from '@/screens/Cart/components/CartProduct'
 import { Button } from '@/components/Button'
 
 import { useTheme } from 'styled-components/native'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ProductStorage } from '@/types/dataListCoffeType'
 
 import { useProductsStorage } from '@/contexts/contextProductsStorage'
 import { StackRoutesProps } from '@/routes/stack.routes'
 import { HeaderScreen } from '@/components/HeaderScreen'
 import { ShoppingCart } from 'phosphor-react-native'
+import Animated, {
+  Layout,
+  SlideInRight,
+  SlideOutRight,
+} from 'react-native-reanimated'
+import { Swipeable } from 'react-native-gesture-handler'
+import { SwipeableButton } from './components/SwipeableButton'
 
 export const Cart = () => {
   const theme = useTheme()
@@ -30,7 +37,7 @@ export const Cart = () => {
       const price = product.data.price * product.quantity
       return price + acc
     }, 0)
-    setProductsPriceTotal(totalPrice)
+    setProductsPriceTotal(Number(totalPrice.toFixed(2)))
   }
 
   const handleProductsPriceTotal = (price: number) => {
@@ -55,17 +62,38 @@ export const Cart = () => {
       </View>
       {dataProductsCart.length ? (
         <>
-          <FlatList
+          <ScrollView>
+            {dataProductsCart.map((product) => (
+              <Animated.View
+                key={product.data.id}
+                entering={SlideInRight}
+                exiting={SlideOutRight}
+                layout={Layout.springify()}
+              >
+                <CartProduct
+                  product={product}
+                  handleTotalPrice={handleProductsPriceTotal}
+                />
+              </Animated.View>
+            ))}
+          </ScrollView>
+          {/* <FlatList
             data={dataProductsCart}
             keyExtractor={(item) => String(item.data.id)}
             renderItem={({ item }) => (
-              <CartProduct
-                product={item}
-                handleTotalPrice={handleProductsPriceTotal}
-              />
+              <Animated.View
+                entering={SlideInRight}
+                exiting={SlideOutRight}
+                layout={Layout.springify()}
+              >
+                <CartProduct
+                  product={item}
+                  handleTotalPrice={handleProductsPriceTotal}
+                />
+              </Animated.View>
             )}
             contentContainerStyle={{ paddingBottom: 162 }}
-          />
+          /> */}
 
           <S.Footer
             style={{

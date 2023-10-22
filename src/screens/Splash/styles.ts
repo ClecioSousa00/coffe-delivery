@@ -13,10 +13,11 @@ export const ContentLogo = styled.View`
   justify-content: center;
   position: relative;
 `
-export const Circle = styled(Animated.View)`
+export const AnimatedCircle = styled(Animated.View)`
   background-color: ${({ theme }) => theme.colors.purple};
   width: 0px;
   height: 0px;
   position: absolute;
   z-index: -1;
+  border-radius: 999px;
 `

@@ -71,7 +71,7 @@ export const Description = styled.Text`
 `
 
 export const ImageCoffee = styled.Image`
-  bottom: -50px;
+  bottom: 10px;
   z-index: 1;
 `
 
@@ -98,6 +98,7 @@ export const ContainerInput = styled.View`
   border-radius: 6px;
   flex-direction: row;
   align-items: center;
+  gap: 4px;
   padding: 8px;
   margin-top: 20px;
 `

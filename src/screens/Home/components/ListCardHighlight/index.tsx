@@ -3,7 +3,7 @@ import * as S from './styles'
 import { View } from 'react-native'
 import { useEffect, useState } from 'react'
 
-import { CardCoffee } from '@/components/CardCoffee'
+import { CardCoffee } from '@/screens/Home/components/CardCoffee'
 
 import { DataListCoffeeProps } from '@/types/dataListCoffeType'
 import { dataListCoffee } from '@/dataListCoffee'
@@ -29,7 +29,9 @@ export const ListCardHighLight = ({ data }: Props) => {
       <S.ListCard
         data={dataList}
         keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }) => <CardCoffee data={item} />}
+        renderItem={({ item, index }) => (
+          <CardCoffee index={index} data={item} />
+        )}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{

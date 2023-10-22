@@ -19,7 +19,8 @@ import LogoName from '@/assets/logoName.svg'
 export const Splash = () => {
   const splashAnimation = useSharedValue(0)
   const navigation = useNavigation<StackRoutesProps>()
-  const { width: screenWidth, height: screenHeight } = Dimensions.get('screen')
+  const { height: screenHeight } = Dimensions.get('screen')
+
   const logoStyle = useAnimatedStyle(() => {
     return {
       transform: [
@@ -42,8 +43,16 @@ export const Splash = () => {
 
   const animatedStyleCircle = useAnimatedStyle(() => {
     return {
-      width: interpolate(splashAnimation.value, [0, 50], [0, screenWidth]),
-      height: interpolate(splashAnimation.value, [0, 50], [0, screenHeight]),
+      width: interpolate(
+        splashAnimation.value,
+        [0, 50],
+        [0, screenHeight + 100],
+      ),
+      height: interpolate(
+        splashAnimation.value,
+        [0, 50],
+        [0, screenHeight + 100],
+      ),
     }
   })
 
@@ -69,7 +78,7 @@ export const Splash = () => {
           <LogoName />
         </Animated.View>
       </S.ContentLogo>
-      <S.Circle style={animatedStyleCircle} />
+      <S.AnimatedCircle style={animatedStyleCircle} />
     </S.Container>
   )
 }

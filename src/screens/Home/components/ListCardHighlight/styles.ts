@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 import { FlatList, FlatListProps } from 'react-native'
-import { DataListCoffeeProps } from '../../types/dataListCoffeType'
+import { DataListCoffeeProps } from '../../../../types/dataListCoffeType'
 
 export const Container = styled.View`
   margin-top: -70px;
