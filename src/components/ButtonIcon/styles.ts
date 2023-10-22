@@ -1,13 +1,11 @@
 import styled, { css } from 'styled-components/native'
 import { ButtonIconProps } from './'
-import { TouchableOpacity } from 'react-native'
+import { Pressable, TouchableOpacity } from 'react-native'
+import Animated from 'react-native-reanimated'
 
-type Props = Pick<ButtonIconProps, 'isSelected'>
+const animatedPressable = Animated.createAnimatedComponent(Pressable)
 
-export const Button = styled(TouchableOpacity)<Props>`
-  ${({ theme, isSelected }) => css`
-    background-color: ${isSelected ? theme.colors.gray_700 : 'transparent'};
-    border-radius: 6px;
-    padding: 8px;
-  `}
+export const Button = styled(animatedPressable)`
+  border-radius: 6px;
+  padding: 8px;
 `

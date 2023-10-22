@@ -1,8 +1,12 @@
 import styled, { css } from 'styled-components/native'
 
 export const Container = styled.View`
+  height: 118px;
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.white};
   padding: 16px 32px;
-  border-width: 1px;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
   border-color: ${({ theme }) => theme.colors.gray_600};
   flex-direction: row;
   align-items: center;

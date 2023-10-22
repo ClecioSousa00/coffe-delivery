@@ -1,5 +1,11 @@
-import { useNavigation } from '@react-navigation/native'
 import * as S from './styles'
+import { useNavigation } from '@react-navigation/native'
+import {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  FadeInRight,
+} from 'react-native-reanimated'
 
 import { DataListCoffeeProps } from '@/types/dataListCoffeType'
 import { StackRoutesProps } from '@/routes/stack.routes'
@@ -7,13 +13,30 @@ import { Tag } from '@/Tag'
 
 type Props = {
   data: DataListCoffeeProps
+  index: number
 }
 
-export const CardCoffee = ({ data }: Props) => {
+export const CardCoffee = ({ data, index }: Props) => {
   const navigation = useNavigation<StackRoutesProps>()
+  // const scale = useSharedValue(1)
+
+  // const animatedButtonStyle = useAnimatedStyle(() => {
+  //   return {
+  //     transform: [{ scale: scale.value }],
+  //   }
+  // })
+
+  // const onPressIn = () => {
+  //   scale.value = withTiming(1.1)
+  // }
+
+  // const onPressOut = () => {
+  //   scale.value = withTiming(1)
+  // }
 
   return (
     <S.Container
+      entering={FadeInRight.delay(index * 200)}
       style={{
         elevation: 7,
         shadowColor: '#000',

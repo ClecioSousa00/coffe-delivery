@@ -29,7 +29,9 @@ export const ListCardHighLight = ({ data }: Props) => {
       <S.ListCard
         data={dataList}
         keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }) => <CardCoffee data={item} />}
+        renderItem={({ item, index }) => (
+          <CardCoffee index={index} data={item} />
+        )}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{

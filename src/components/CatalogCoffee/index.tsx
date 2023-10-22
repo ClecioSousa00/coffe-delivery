@@ -77,7 +77,9 @@ export const CatalogCoffee = () => {
         sections={dataCatalogCoffee}
         keyExtractor={(item) => String(item.id)}
         contentContainerStyle={{ paddingBottom: 32 }}
-        renderItem={({ item }) => <CardCatalogCoffee data={item} />}
+        renderItem={({ item, index }) => (
+          <CardCatalogCoffee index={index} data={item} />
+        )}
         renderSectionHeader={({ section }) => (
           <S.CategoryText>{singularToPlural[section.title]}</S.CategoryText>
         )}

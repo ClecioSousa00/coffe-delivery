@@ -1,6 +1,10 @@
+import { Pressable } from 'react-native'
+import Animated from 'react-native-reanimated'
 import styled, { css } from 'styled-components/native'
 
-export const Container = styled.Pressable`
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
+
+export const Container = styled(AnimatedPressable)`
   width: 166px;
   height: 204px;
   align-items: center;

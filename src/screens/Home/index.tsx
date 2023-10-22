@@ -68,7 +68,7 @@ export const Home = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <S.Container>
+      <S.Container showsVerticalScrollIndicator={false}>
         <S.Header>
           <S.HeaderTopInfos>
             <S.ContentLocal>
