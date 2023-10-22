@@ -1,9 +1,9 @@
-import { Trash } from 'phosphor-react-native'
-import { ButtonCounter } from '../ButtonCounter'
 import * as S from './styles'
+import { Trash } from 'phosphor-react-native'
+import { ButtonCounter } from '../../../../components/ButtonCounter'
 
 import { useTheme } from 'styled-components/native'
-import { ButtonIcon } from '../ButtonIcon'
+import { ButtonIcon } from '../../../../components/ButtonIcon'
 import { ProductStorage } from '@/types/dataListCoffeType'
 
 import { useCardProduct } from '@/hooks/useCartProduct'
@@ -29,9 +29,8 @@ export const CartProduct = ({ product, handleTotalPrice }: Props) => {
   return (
     <Swipeable
       overshootLeft={false}
-      renderLeftActions={() => (
-        <SwipeableButton onPress={() => handleRemoveProduct(product.data.id)} />
-      )}
+      onSwipeableOpen={() => handleRemoveProduct(product.data.id)}
+      renderLeftActions={() => <SwipeableButton />}
       renderRightActions={() => null}
     >
       <S.Container>

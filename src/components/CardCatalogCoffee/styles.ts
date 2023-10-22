@@ -27,8 +27,8 @@ export const Container = styled(animatedTouchableOpacity)`
 
 export const ImageCoffee = styled.Image`
   margin-top: -40px;
-  width: 96px;
-  height: 96px;
+  width: 82px;
+  height: 82px;
 `
 
 export const Content = styled.View`

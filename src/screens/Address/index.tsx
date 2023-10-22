@@ -17,8 +17,8 @@ import {
   Money,
 } from 'phosphor-react-native'
 
-import { Input } from '@/components/Form/Input'
-import { ButtonPayment } from '@/components/ButtonPayment'
+import { Input } from '@/screens/Address/components/Form/Input'
+import { ButtonPayment } from '@/screens/Address/components/ButtonPayment'
 import { Button } from '@/components/Button'
 
 import { useTheme } from 'styled-components/native'

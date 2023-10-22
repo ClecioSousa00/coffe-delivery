@@ -1,9 +1,9 @@
 import styled from 'styled-components/native'
 
 export const Button = styled.Pressable`
-  align-items: center;
   justify-content: center;
-  width: 120px;
+  padding-left: 40px;
+  width: 100%;
   height: 118px;
   background-color: ${({ theme }) => theme.colors.red_light};
 `

@@ -71,7 +71,7 @@ export const Description = styled.Text`
 `
 
 export const ImageCoffee = styled.Image`
-  bottom: -50px;
+  bottom: 10px;
   z-index: 1;
 `
 

@@ -15,8 +15,6 @@ export const ButtonPayment = ({
   children,
   ...rest
 }: ButtonPaymentProps) => {
-  console.log(`${text} ---- ${isActive}`)
-
   return (
     <S.Button isActive={isActive} {...rest}>
       {children}

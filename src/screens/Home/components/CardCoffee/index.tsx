@@ -9,7 +9,7 @@ import {
 
 import { DataListCoffeeProps } from '@/types/dataListCoffeType'
 import { StackRoutesProps } from '@/routes/stack.routes'
-import { Tag } from '@/Tag'
+import { Tag } from '@/components/Tag'
 
 type Props = {
   data: DataListCoffeeProps

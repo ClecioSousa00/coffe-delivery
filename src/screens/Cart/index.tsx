@@ -4,7 +4,7 @@ import { FlatList, ScrollView, StatusBar, View } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
 
-import { CartProduct } from '@/components/CartProduct'
+import { CartProduct } from '@/screens/Cart/components/CartProduct'
 import { Button } from '@/components/Button'
 
 import { useTheme } from 'styled-components/native'

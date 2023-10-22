@@ -2,7 +2,7 @@ import * as S from './styles'
 import { useEffect, useState } from 'react'
 import { SectionList, View } from 'react-native'
 
-import { TagCatalogCoffee } from '@/components/TagCatalogCoffee'
+import { TagCatalogCoffee } from '@/screens/Home/components/TagCatalogCoffee'
 import { CardCatalogCoffee } from '@/components/CardCatalogCoffee'
 
 import { groupDataByType } from '@/utils/groupDatabyType'
