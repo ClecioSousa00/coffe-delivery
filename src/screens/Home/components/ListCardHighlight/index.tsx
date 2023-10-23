@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { CardCoffee } from '@/screens/Home/components/CardCoffee'
 
 import { DataListCoffeeProps } from '@/types/dataListCoffeType'
-import { dataListCoffee } from '@/dataListCoffee'
+import { dataListCoffee } from '@/DataProducts/dataListCoffee'
 
 type Props = {
   data: DataListCoffeeProps[]

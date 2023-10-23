@@ -18,7 +18,7 @@ import { Tag } from '@/components/Tag'
 
 import coffee from '../../assets/Coffee.png'
 
-import { dataListCoffee } from '@/dataListCoffee'
+import { dataListCoffee } from '@/DataProducts/dataListCoffee'
 import { DataListCoffeeProps, ProductStorage } from '@/types/dataListCoffeType'
 import { StackRoutesProps } from '@/routes/stack.routes'
 import { saveProductStorage } from '@/storage/productCart/saveProductStorage'

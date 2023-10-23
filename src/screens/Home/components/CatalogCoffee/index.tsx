@@ -9,7 +9,7 @@ import { groupDataByType } from '@/utils/groupDatabyType'
 
 import { CatalogDataList, DataListCoffeeProps } from '@/types/dataListCoffeType'
 
-import { dataListCoffee } from '@/dataListCoffee'
+import { dataListCoffee } from '@/DataProducts/dataListCoffee'
 
 const singularToPlural = {
   tradicional: 'tradicionais',

@@ -15,12 +15,9 @@ import { MapPin } from 'phosphor-react-native'
 import grainCoffeeImage from '@/assets/coffe.png'
 import theme from '@/styles/theme'
 
-import { dataListCoffee } from '@/dataListCoffee'
+import { dataListCoffee } from '@/DataProducts/dataListCoffee'
 import { getAddressStorage } from '@/storage/addressStorage/getAddressStorage'
 import { AddressStorageProps } from '@/types/addressStorage'
-
-import Toast from 'react-native-toast-message'
-import { ToastMessage } from '@/components/ToastMessage'
 
 export const Home = () => {
   const [isFocused, setIsFocused] = useState(false)
