@@ -62,7 +62,7 @@ export const Cart = () => {
       </View>
       {dataProductsCart.length ? (
         <>
-          <ScrollView>
+          <ScrollView contentContainerStyle={{ paddingBottom: 162 }}>
             {dataProductsCart.map((product) => (
               <Animated.View
                 key={product.data.id}

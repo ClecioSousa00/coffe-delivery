@@ -26,6 +26,7 @@ import { useProductsStorage } from '@/contexts/contextProductsStorage'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { PRODUCT_STORAGE_KEY } from '@/storage/storageConfig'
 import { View } from 'react-native'
+import Toast from 'react-native-toast-message'
 
 type ParamsProps = {
   id: number
@@ -85,7 +86,9 @@ export const Product = () => {
     } catch (error) {
       console.log('erro ao adicionar produto no carrinho', error)
     }
-    navigation.navigate('cart')
+
+    showToast(newProduct)
+    navigation.navigate('home')
   }
   // const removeProductStorage = async () => {
   //   try {
@@ -93,6 +96,17 @@ export const Product = () => {
   //     console.log('removeu')
   //   } catch (error) {}
   // }
+
+  const showToast = (product: ProductStorage) => {
+    console.log('showtoast', product)
+
+    Toast.show({
+      type: 'productToast',
+      props: {
+        product,
+      },
+    })
+  }
 
   useEffect(() => {
     const selectedProductForId = dataListCoffee.find((item) => item.id === id)

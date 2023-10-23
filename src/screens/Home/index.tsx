@@ -19,6 +19,9 @@ import { dataListCoffee } from '@/dataListCoffee'
 import { getAddressStorage } from '@/storage/addressStorage/getAddressStorage'
 import { AddressStorageProps } from '@/types/addressStorage'
 
+import Toast from 'react-native-toast-message'
+import { ToastMessage } from '@/components/ToastMessage'
+
 export const Home = () => {
   const [isFocused, setIsFocused] = useState(false)
   const [inputValue, setInputValue] = useState('')
@@ -46,12 +49,6 @@ export const Home = () => {
     console.log(productAlreadyExists)
   }
 
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', () => {
-      return true
-    })
-  }, [])
-
   const getAddressAsyncStorage = async () => {
     try {
       const addressStorage = await getAddressStorage()
@@ -61,6 +58,11 @@ export const Home = () => {
     }
   }
 
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      return true
+    })
+  }, [])
   useFocusEffect(
     useCallback(() => {
       getAddressAsyncStorage()
@@ -98,6 +100,7 @@ export const Home = () => {
         <Animated.View entering={FadeInDown.delay(300)}>
           <CatalogCoffee />
         </Animated.View>
+        {/* <ToastMessage /> */}
       </S.Container>
     </TouchableWithoutFeedback>
   )
