@@ -16,7 +16,7 @@ type StackNavigationProps = {
   product: { id: number }
   cart: undefined
   address: undefined
-  purchaseCompleted
+  purchaseCompleted: undefined
 }
 export type StackRoutesProps = NativeStackNavigationProp<StackNavigationProps>
 const { Navigator, Screen } = createNativeStackNavigator<StackNavigationProps>()
