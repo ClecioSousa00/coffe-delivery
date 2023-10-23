@@ -1,23 +1,31 @@
 import * as S from './styles'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { BackHandler, Keyboard, TouchableWithoutFeedback } from 'react-native'
+import { useFocusEffect } from '@react-navigation/native'
+import Animated, { FadeInDown } from 'react-native-reanimated'
 
 import { InputSearch } from '@/components/InputSearch'
-import { ListCardHighLight } from '@/components/ListCardHighlight'
-import { CatalogCoffee } from '@/components/CatalogCoffee'
+import { ListCardHighLight } from './components/ListCardHighlight'
+import { CatalogCoffee } from './components/CatalogCoffee'
+import { ButtonCart } from '@/components/ButtonCart'
 
-import { MapPin, ShoppingCart } from 'phosphor-react-native'
+import { MapPin } from 'phosphor-react-native'
 
 import grainCoffeeImage from '@/assets/coffe.png'
 import theme from '@/styles/theme'
 
-import { dataListCoffee } from '@/dataListCoffee'
+import { dataListCoffee } from '@/DataProducts/dataListCoffee'
+import { getAddressStorage } from '@/storage/addressStorage/getAddressStorage'
+import { AddressStorageProps } from '@/types/addressStorage'
 
 export const Home = () => {
   const [isFocused, setIsFocused] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const [dataList, setDataList] = useState(dataListCoffee)
+  const [address, setAddress] = useState<AddressStorageProps>(
+    {} as AddressStorageProps,
+  )
 
   const handleFocusInput = () => {
     setIsFocused((prevState) => !prevState)
@@ -35,7 +43,15 @@ export const Home = () => {
     )
 
     if (productAlreadyExists.length) setDataList(productAlreadyExists)
-    console.log(productAlreadyExists)
+  }
+
+  const getAddressAsyncStorage = async () => {
+    try {
+      const addressStorage = await getAddressStorage()
+      setAddress(addressStorage)
+    } catch (error) {
+      console.log('erro ao buscar endereço no storage')
+    }
   }
 
   useEffect(() => {
@@ -43,17 +59,24 @@ export const Home = () => {
       return true
     })
   }, [])
+  useFocusEffect(
+    useCallback(() => {
+      getAddressAsyncStorage()
+    }, []),
+  )
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <S.Container>
+      <S.Container showsVerticalScrollIndicator={false}>
         <S.Header>
           <S.HeaderTopInfos>
             <S.ContentLocal>
               <MapPin color={theme.colors.purple} size={20} weight="fill" />
-              <S.TextLocal>Porto Alegre, RS</S.TextLocal>
+              {address.city && (
+                <S.TextLocal>{`${address.city}, ${address.state}`}</S.TextLocal>
+              )}
             </S.ContentLocal>
-            <ShoppingCart color={theme.colors.yellow_dark} weight="fill" />
+            <ButtonCart />
           </S.HeaderTopInfos>
 
           <S.TitleSearch>
@@ -70,7 +93,10 @@ export const Home = () => {
           <S.ImageGrainCoffee source={grainCoffeeImage} />
         </S.Header>
         <ListCardHighLight data={dataList} />
-        <CatalogCoffee />
+        <Animated.View entering={FadeInDown.delay(300)}>
+          <CatalogCoffee />
+        </Animated.View>
+        {/* <ToastMessage /> */}
       </S.Container>
     </TouchableWithoutFeedback>
   )

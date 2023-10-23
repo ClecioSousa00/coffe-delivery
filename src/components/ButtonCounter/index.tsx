@@ -1,6 +1,9 @@
 import * as S from './styles'
-import { Minus, Plus } from 'phosphor-react-native'
 import { useTheme } from 'styled-components/native'
+
+import { Minus, Plus } from 'phosphor-react-native'
+
+import { ButtonIcon } from '../ButtonIcon'
 
 type Props = {
   quantity: number
@@ -14,15 +17,16 @@ export const ButtonCounter = ({
   handleDecrement,
 }: Props) => {
   const theme = useTheme()
+
   return (
     <S.ContentInput>
-      <S.ButtonInput onPress={handleDecrement}>
+      <ButtonIcon isSelected={false} onPress={handleDecrement}>
         <Minus color={theme.colors.purple} size={20} weight="bold" />
-      </S.ButtonInput>
+      </ButtonIcon>
       <S.InputNumber>{quantity}</S.InputNumber>
-      <S.ButtonInput onPress={handleIncrement}>
+      <ButtonIcon isSelected={false} onPress={handleIncrement}>
         <Plus color={theme.colors.purple} size={20} weight="bold" />
-      </S.ButtonInput>
+      </ButtonIcon>
     </S.ContentInput>
   )
 }

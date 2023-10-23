@@ -1,30 +1,17 @@
-import { RectButton } from 'react-native-gesture-handler'
-import styled, { DefaultTheme, css } from 'styled-components/native'
+import styled, { css } from 'styled-components/native'
 import { Props } from '.'
+import { TouchableOpacity } from 'react-native'
 
-type ButtonProps = Pick<Props, 'color' | 'enabled'>
+type ButtonProps = Pick<Props, 'color' | 'disabled'>
 
-// const modifiers ={
-//   primaryFocus: (theme: DefaultTheme) => css`
-//     background-color: ${theme.colors.purple};
-//   `,
-//   secondaryDefault: (theme: DefaultTheme) => css`
-//     background-color: ${theme.colors.yellow_dark};
-//   `,
-//   secondaryFocus: (theme: DefaultTheme) => css`
-//     background-color: ${theme.colors.yellow};
-//   `
-
-// }
-
-export const Button = styled(RectButton)<ButtonProps>`
-  ${({ theme, color, enabled }) => css`
-    flex: 1;
+export const Button = styled(TouchableOpacity)<ButtonProps>`
+  ${({ theme, color, disabled }) => css`
     height: 46px;
+    width: 100%;
     align-items: center;
     justify-content: center;
     border-radius: 6px;
-    opacity: ${enabled ? '1' : '0.5'};
+    opacity: ${disabled ? '0.5' : '1'};
     background-color: ${color || theme.colors.purple};
   `}
 `

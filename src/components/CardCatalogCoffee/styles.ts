@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components/native'
+import { TouchableOpacity } from 'react-native'
+import Animated from 'react-native-reanimated'
 
-export const Container = styled.TouchableOpacity`
+const animatedTouchableOpacity =
+  Animated.createAnimatedComponent(TouchableOpacity)
+
+export const Container = styled(animatedTouchableOpacity)`
   width: 312px;
   height: 112px;
 
@@ -22,8 +27,8 @@ export const Container = styled.TouchableOpacity`
 
 export const ImageCoffee = styled.Image`
   margin-top: -40px;
-  width: 96px;
-  height: 96px;
+  width: 82px;
+  height: 82px;
 `
 
 export const Content = styled.View`
