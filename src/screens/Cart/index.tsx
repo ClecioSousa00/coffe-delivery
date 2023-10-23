@@ -1,54 +1,30 @@
 import * as S from './styles'
 
-import { FlatList, ScrollView, StatusBar, View } from 'react-native'
+import { ScrollView, StatusBar, View } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
+import { StackRoutesProps } from '@/routes/stack.routes'
 
 import { CartProduct } from '@/screens/Cart/components/CartProduct'
 import { Button } from '@/components/Button'
+import { HeaderScreen } from '@/components/HeaderScreen'
 
 import { useTheme } from 'styled-components/native'
-import React, { useEffect, useState } from 'react'
-import { ProductStorage } from '@/types/dataListCoffeType'
 
-import { useProductsStorage } from '@/contexts/contextProductsStorage'
-import { StackRoutesProps } from '@/routes/stack.routes'
-import { HeaderScreen } from '@/components/HeaderScreen'
 import { ShoppingCart } from 'phosphor-react-native'
+
 import Animated, {
   Layout,
   SlideInRight,
   SlideOutRight,
 } from 'react-native-reanimated'
-import { Swipeable } from 'react-native-gesture-handler'
-import { SwipeableButton } from './components/SwipeableButton'
+import { useCartPrice } from '@/hooks/useCartPrice'
 
 export const Cart = () => {
   const theme = useTheme()
   const navigation = useNavigation<StackRoutesProps>()
-
-  const [productsPriceTotal, setProductsPriceTotal] = useState<number | null>(
-    null,
-  )
-  const { dataProductsCart } = useProductsStorage()
-
-  const calculateProductsPriceTotal = (products: ProductStorage[]) => {
-    const totalPrice = products.reduce((acc, product) => {
-      const price = product.data.price * product.quantity
-      return price + acc
-    }, 0)
-    setProductsPriceTotal(Number(totalPrice.toFixed(2)))
-  }
-
-  const handleProductsPriceTotal = (price: number) => {
-    const newPriceProduct = Number((productsPriceTotal + price).toFixed(2))
-    setProductsPriceTotal(newPriceProduct)
-  }
-
-  useEffect(() => {
-    if (!dataProductsCart.length) return
-    calculateProductsPriceTotal(dataProductsCart)
-  }, [dataProductsCart])
+  const { dataProductsCart, handleProductsPriceTotal, productsPriceTotal } =
+    useCartPrice()
 
   return (
     <S.Container>
@@ -77,23 +53,6 @@ export const Cart = () => {
               </Animated.View>
             ))}
           </ScrollView>
-          {/* <FlatList
-            data={dataProductsCart}
-            keyExtractor={(item) => String(item.data.id)}
-            renderItem={({ item }) => (
-              <Animated.View
-                entering={SlideInRight}
-                exiting={SlideOutRight}
-                layout={Layout.springify()}
-              >
-                <CartProduct
-                  product={item}
-                  handleTotalPrice={handleProductsPriceTotal}
-                />
-              </Animated.View>
-            )}
-            contentContainerStyle={{ paddingBottom: 162 }}
-          /> */}
 
           <S.Footer
             style={{

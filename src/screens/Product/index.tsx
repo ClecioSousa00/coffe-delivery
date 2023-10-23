@@ -1,7 +1,5 @@
 import * as S from './styles'
 
-import { useEffect, useState } from 'react'
-
 import { useNavigation, useRoute } from '@react-navigation/native'
 
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -18,104 +16,31 @@ import { Tag } from '@/components/Tag'
 
 import coffee from '../../assets/Coffee.png'
 
-import { dataListCoffee } from '@/DataProducts/dataListCoffee'
-import { DataListCoffeeProps, ProductStorage } from '@/types/dataListCoffeType'
 import { StackRoutesProps } from '@/routes/stack.routes'
-import { saveProductStorage } from '@/storage/productCart/saveProductStorage'
-import { useProductsStorage } from '@/contexts/contextProductsStorage'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { PRODUCT_STORAGE_KEY } from '@/storage/storageConfig'
 import { View } from 'react-native'
-import Toast from 'react-native-toast-message'
+import { useProduct } from '@/hooks/useProduct'
 
 type ParamsProps = {
   id: number
 }
 
-const sizeCoffee = [114, 140, 227]
-
 export const Product = () => {
-  const [optionSelected, setOptionSelected] = useState<number | null>(null)
-  const [quantityCoffee, setQuantityCoffee] = useState(1)
-  const [dataCoffee, setDataCoffee] = useState<DataListCoffeeProps>(
-    {} as DataListCoffeeProps,
-  )
-  const [priceCoffee, setPriceCoffee] = useState<number | null>(null)
-  const { dataProductsCart, setProductCart } = useProductsStorage()
-
   const navigation = useNavigation<StackRoutesProps>()
   const route = useRoute()
   const theme = useTheme()
-
   const { id } = route.params as ParamsProps
+  const {
+    dataCoffee,
+    handleAddProductToCart,
+    handleDecrementCoffee,
+    handleIncrementCoffee,
+    handleSelectedOption,
+    optionSelected,
+    price,
+    quantityCoffee,
+    sizeCoffee,
+  } = useProduct(id)
 
-  const handleSelectedOption = (size: number) => {
-    if (size === optionSelected) {
-      setOptionSelected(null)
-      setPriceCoffee(dataCoffee.price)
-      return
-    }
-    setOptionSelected(size)
-    const newPrice = (dataCoffee.price / sizeCoffee[1]) * size
-    setPriceCoffee(Number(newPrice.toFixed(2)))
-  }
-
-  const handleIncrementCoffee = () => {
-    setQuantityCoffee((prevState) => prevState + 1)
-  }
-
-  const handleDecrementCoffee = () => {
-    if (quantityCoffee === 1) return
-    setQuantityCoffee((prevState) => prevState - 1)
-  }
-
-  const handleAddProductToCart = async () => {
-    const productIsExists = dataProductsCart.some(
-      (product) => product.data.id === dataCoffee.id,
-    )
-    if (productIsExists) return
-
-    const newProduct: ProductStorage = {
-      data: { ...dataCoffee, price: priceCoffee },
-      quantity: quantityCoffee,
-      size: optionSelected,
-    }
-    setProductCart([...dataProductsCart, newProduct])
-    try {
-      await saveProductStorage(newProduct)
-    } catch (error) {
-      console.log('erro ao adicionar produto no carrinho', error)
-    }
-
-    showToast(newProduct)
-    navigation.navigate('home')
-  }
-  // const removeProductStorage = async () => {
-  //   try {
-  //     await AsyncStorage.removeItem(PRODUCT_STORAGE_KEY)
-  //     console.log('removeu')
-  //   } catch (error) {}
-  // }
-
-  const showToast = (product: ProductStorage) => {
-    console.log('showtoast', product)
-
-    Toast.show({
-      type: 'productToast',
-      props: {
-        product,
-      },
-    })
-  }
-
-  useEffect(() => {
-    const selectedProductForId = dataListCoffee.find((item) => item.id === id)
-    setDataCoffee({ ...selectedProductForId })
-    setPriceCoffee(selectedProductForId.price)
-    // removeProductStorage()
-  }, [id])
-
-  const price = Number(priceCoffee * quantityCoffee).toFixed(2)
   return (
     <S.Container>
       <S.Content>

@@ -3,7 +3,6 @@ import * as S from './styles'
 import { ReactNode } from 'react'
 import { TouchableOpacityProps } from 'react-native'
 import {
-  Easing,
   interpolateColor,
   useAnimatedStyle,
   useSharedValue,

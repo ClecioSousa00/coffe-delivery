@@ -1,5 +1,5 @@
-import { useNavigation } from '@react-navigation/native'
 import * as S from './styles'
+import { useNavigation } from '@react-navigation/native'
 import { ArrowLeft } from 'phosphor-react-native'
 
 import { useTheme } from 'styled-components/native'

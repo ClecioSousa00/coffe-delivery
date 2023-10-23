@@ -51,7 +51,6 @@ export const TagCatalogCoffee = ({
 
   useEffect(() => {
     active.value = withTiming(isActive ? 0 : 1)
-    console.log('executou')
   }, [isActive, active])
 
   return (

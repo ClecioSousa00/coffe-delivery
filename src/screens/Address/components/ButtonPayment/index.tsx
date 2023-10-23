@@ -1,6 +1,5 @@
 import * as S from './styles'
 import { ReactNode } from 'react'
-import { RectButtonProps } from 'react-native-gesture-handler'
 import { TouchableOpacityProps } from 'react-native'
 
 export type ButtonPaymentProps = {

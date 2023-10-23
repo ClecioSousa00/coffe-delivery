@@ -1,6 +1,6 @@
+import styled, { css } from 'styled-components/native'
 import { Pressable } from 'react-native'
 import Animated from 'react-native-reanimated'
-import styled, { css } from 'styled-components/native'
 
 const animatedPressable = Animated.createAnimatedComponent(Pressable)
 

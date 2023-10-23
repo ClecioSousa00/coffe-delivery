@@ -43,7 +43,6 @@ export const Home = () => {
     )
 
     if (productAlreadyExists.length) setDataList(productAlreadyExists)
-    console.log(productAlreadyExists)
   }
 
   const getAddressAsyncStorage = async () => {
