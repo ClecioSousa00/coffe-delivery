@@ -1,12 +1,17 @@
-<h1>Coffe Delivery</>
-<br />
+<h1 align="center">Coffee Delivery</h1>
 
 ## Projeto
 
 Este Projeto é um desafio que pode ser econtrado no figma da [rocketseat](https://www.figma.com/community/file/1245817631079079109). 
 O Coffee Delivery é uma aplicação móvel que permite aos usuários pedirem café para entrega. Além disso eu criei outra tela que para o usuário fornecer um endereço de entrega.
 
+## Funcionalidades
 
+* Busca: O usuário pode buscar pelo nome do café.
+* Tamanho do café: Aqui dependendo do tamanho do café selecioado o preço base é ajustado.
+* Quantidade: Ao selecionar a quantidade o preço é ajustado.
+* Endereço: Ao fornecer o CEP os campos são preenchidos automaticamente com os dados fornecidos pela ViaCep. 
+* Storage: Ao adicionar o produto no carrinho ele é salvo no Storage do dispositivo.
 
 
 ## Tecnologias
