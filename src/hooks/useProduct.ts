@@ -2,12 +2,8 @@ import { dataListCoffee } from '@/DataProducts/dataListCoffee'
 import { useProductsStorage } from '@/contexts/contextProductsStorage'
 import { StackRoutesProps } from '@/routes/stack.routes'
 import { saveProductStorage } from '@/storage/productCart/saveProductStorage'
-import {
-  ADDRESS_STORAGE_KEY,
-  PRODUCT_STORAGE_KEY,
-} from '@/storage/storageConfig'
+
 import { DataListCoffeeProps, ProductStorage } from '@/types/dataListCoffeType'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
 import Toast from 'react-native-toast-message'
