@@ -2,7 +2,7 @@ import * as S from './styles'
 import { PressableProps } from 'react-native'
 
 type Props = {
-  isSelected: boolean
+  isSelected?: boolean
   size: number
 } & PressableProps
 
@@ -12,8 +12,10 @@ export const ButtonOptionsSelect = ({
   ...rest
 }: Props) => {
   return (
-    <S.ButtonOption isSelected={isSelected} {...rest}>
-      <S.ButtonText isSelected={isSelected}>{size}ml</S.ButtonText>
+    <S.ButtonOption testID="button" isSelected={isSelected} {...rest}>
+      <S.ButtonText testID="button-text" isSelected={isSelected}>
+        {size}ml
+      </S.ButtonText>
     </S.ButtonOption>
   )
 }

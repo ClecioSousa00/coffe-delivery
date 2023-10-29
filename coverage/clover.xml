@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1698538130414" clover="3.2.0">
-  <project timestamp="1698538130415" name="All files">
-    <metrics statements="50" coveredstatements="48" conditionals="17" coveredconditionals="16" methods="23" coveredmethods="21" elements="90" coveredelements="85" complexity="0" loc="50" ncloc="50" packages="7" files="11" classes="11"/>
+<coverage generated="1698540188930" clover="3.2.0">
+  <project timestamp="1698540188931" name="All files">
+    <metrics statements="61" coveredstatements="59" conditionals="22" coveredconditionals="21" methods="31" coveredmethods="29" elements="114" coveredelements="109" complexity="0" loc="61" ncloc="61" packages="8" files="13" classes="13"/>
     <package name="__tests__.utils">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="renderWithThemeProvider.tsx" path="/home/dev/Documentos/expo/coffe-delivery/src/__tests__/utils/renderWithThemeProvider.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="5" count="3" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
       </file>
     </package>
     <package name="components.Button">
@@ -76,6 +76,26 @@
         <line num="41" count="3" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
         <line num="44" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.ButtonOptionsSelect">
+      <metrics statements="11" coveredstatements="11" conditionals="5" coveredconditionals="5" methods="8" coveredmethods="8"/>
+      <file name="index.tsx" path="/home/dev/Documentos/expo/coffe-delivery/src/components/ButtonOptionsSelect/index.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+      </file>
+      <file name="styles.ts" path="/home/dev/Documentos/expo/coffe-delivery/src/components/ButtonOptionsSelect/styles.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="4" methods="7" coveredmethods="7"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="28" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="1" type="stmt"/>
       </file>
     </package>
     <package name="components.Tag">

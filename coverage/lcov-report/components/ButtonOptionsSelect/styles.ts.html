@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/Button/styles.ts</title>
+    <title>Code coverage report for components/ButtonOptionsSelect/styles.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/Button</a> styles.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/ButtonOptionsSelect</a> styles.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -89,18 +89,14 @@
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -108,6 +104,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -115,31 +118,49 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import styled, { css } from 'styled-components/native'
-import { Props } from '.'
-import { TouchableOpacity } from 'react-native'
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Text, Pressable } from 'react-native'
+import styled, { css } from 'styled-components/native'
 &nbsp;
-type ButtonProps = Pick&lt;Props, 'color' | 'disabled'&gt;
+type ButtonProps = {
+  isSelected: boolean
+}
 &nbsp;
-export const Button = styled(TouchableOpacity)&lt;ButtonProps&gt;`
-  ${({ theme, color, disabled }) =&gt; css`
-    height: 46px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    opacity: ${disabled ? '0.5' : '1'};
-    background-color: ${color || theme.colors.purple};
-  `}
+export const ButtonOption = styled(Pressable)&lt;ButtonProps&gt;`
+  height: 40px;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background-color: ${({ theme }) =&gt; theme.colors.gray_700};
+  ${({ theme, isSelected }) =&gt;
+    isSelected &amp;&amp;
+    css`
+      background-color: transparent;
+      border: 1px solid ${theme.colors.purple};
+    `}
 `
 &nbsp;
-export const Text = styled.Text`
-  ${({ theme }) =&gt; css`
-    font-family: ${theme.fonts.robotoBold};
-    font-size: ${theme.text_size.button}px;
-    color: ${theme.colors.white};
-    text-transform: uppercase;
-  `}
+export const ButtonText = styled(Text)&lt;ButtonProps&gt;`
+  font-family: ${({ theme }) =&gt; theme.fonts.robotoRegular};
+  font-size: ${({ theme }) =&gt; theme.text_size.sm}px;
+  color: ${({ theme }) =&gt; theme.colors.gray_300};
+  ${({ theme, isSelected }) =&gt;
+    isSelected &amp;&amp;
+    css`
+      color: ${theme.colors.purple};
+      font-family: ${({ theme }) =&gt; theme.fonts.robotoBold};
+    `}
 `
 &nbsp;</pre></td></tr></table></pre>
 
