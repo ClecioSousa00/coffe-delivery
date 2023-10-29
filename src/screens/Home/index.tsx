@@ -2,7 +2,7 @@ import * as S from './styles'
 
 import { useCallback, useEffect, useState } from 'react'
 import { BackHandler, Keyboard, TouchableWithoutFeedback } from 'react-native'
-import { useFocusEffect } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import Animated, { FadeInDown } from 'react-native-reanimated'
 
 import { InputSearch } from '@/components/InputSearch'
@@ -18,6 +18,8 @@ import theme from '@/styles/theme'
 import { dataListCoffee } from '@/DataProducts/dataListCoffee'
 import { getAddressStorage } from '@/storage/addressStorage/getAddressStorage'
 import { AddressStorageProps } from '@/types/addressStorage'
+import { StackRoutesProps } from '@/routes/stack.routes'
+import { useProductsStorage } from '@/contexts/contextProductsStorage'
 
 export const Home = () => {
   const [isFocused, setIsFocused] = useState(false)
@@ -26,6 +28,9 @@ export const Home = () => {
   const [address, setAddress] = useState<AddressStorageProps>(
     {} as AddressStorageProps,
   )
+
+  const navigation = useNavigation<StackRoutesProps>()
+  const { dataProductsCart } = useProductsStorage()
 
   const handleFocusInput = () => {
     setIsFocused((prevState) => !prevState)
@@ -76,7 +81,10 @@ export const Home = () => {
                 <S.TextLocal>{`${address.city}, ${address.state}`}</S.TextLocal>
               )}
             </S.ContentLocal>
-            <ButtonCart />
+            <ButtonCart
+              onPress={() => navigation.navigate('cart')}
+              quantityProducts={dataProductsCart.length}
+            />
           </S.HeaderTopInfos>
 
           <S.TitleSearch>

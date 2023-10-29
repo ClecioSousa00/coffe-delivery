@@ -19,12 +19,16 @@ export const ButtonCounter = ({
   const theme = useTheme()
 
   return (
-    <S.ContentInput>
+    <S.ContentInput testID="button-counter">
       <ButtonIcon isSelected={false} onPress={handleDecrement}>
         <Minus color={theme.colors.purple} size={20} weight="bold" />
       </ButtonIcon>
       <S.InputNumber>{quantity}</S.InputNumber>
-      <ButtonIcon isSelected={false} onPress={handleIncrement}>
+      <ButtonIcon
+        testID="button-increment"
+        isSelected={false}
+        onPress={handleIncrement}
+      >
         <Plus color={theme.colors.purple} size={20} weight="bold" />
       </ButtonIcon>
     </S.ContentInput>

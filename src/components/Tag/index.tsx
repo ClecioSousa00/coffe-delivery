@@ -8,8 +8,10 @@ export type TagProps = {
 
 export const Tag = ({ tagName, grayBackground, tagColor }: TagProps) => {
   return (
-    <S.TagContent grayBackground={grayBackground}>
-      <S.TagText tagColor={tagColor}>{tagName}</S.TagText>
+    <S.TagContent testID="tag" grayBackground={grayBackground}>
+      <S.TagText testID="text-tag" tagColor={tagColor}>
+        {tagName}
+      </S.TagText>
     </S.TagContent>
   )
 }

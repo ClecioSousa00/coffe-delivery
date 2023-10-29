@@ -1,28 +1,26 @@
 import * as S from './styles'
 
-import { useNavigation } from '@react-navigation/native'
-
-import { StackRoutesProps } from '@/routes/stack.routes'
-
 import { useTheme } from 'styled-components/native'
 
 import { ShoppingCart } from 'phosphor-react-native'
 
-import { useProductsStorage } from '@/contexts/contextProductsStorage'
+import { TouchableOpacityProps } from 'react-native'
 
-export const ButtonCart = () => {
+type ButtonCartProps = {
+  quantityProducts: number
+} & TouchableOpacityProps
+
+export const ButtonCart = ({ quantityProducts, ...rest }: ButtonCartProps) => {
   const theme = useTheme()
-  const navigation = useNavigation<StackRoutesProps>()
-  const { dataProductsCart } = useProductsStorage()
 
-  const color = dataProductsCart.length
+  const color = quantityProducts
     ? theme.colors.purple
     : theme.colors.yellow_dark
   return (
-    <S.Button onPress={() => navigation.navigate('cart')}>
-      {dataProductsCart.length > 0 && (
-        <S.Content>
-          <S.Quantity>{dataProductsCart.length}</S.Quantity>
+    <S.Button {...rest}>
+      {quantityProducts > 0 && (
+        <S.Content testID="content-quantity">
+          <S.Quantity>{quantityProducts}</S.Quantity>
         </S.Content>
       )}
       <ShoppingCart color={color} weight="fill" />

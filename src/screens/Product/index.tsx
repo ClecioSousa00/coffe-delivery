@@ -19,6 +19,7 @@ import coffee from '../../assets/Coffee.png'
 import { StackRoutesProps } from '@/routes/stack.routes'
 import { View } from 'react-native'
 import { useProduct } from '@/hooks/useProduct'
+import { useProductsStorage } from '@/contexts/contextProductsStorage'
 
 type ParamsProps = {
   id: number
@@ -40,6 +41,7 @@ export const Product = () => {
     quantityCoffee,
     sizeCoffee,
   } = useProduct(id)
+  const { dataProductsCart } = useProductsStorage()
 
   return (
     <S.Container>
@@ -48,7 +50,10 @@ export const Product = () => {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <ArrowLeft color={theme.colors.white} size={24} />
           </TouchableOpacity>
-          <ButtonCart />
+          <ButtonCart
+            onPress={() => navigation.navigate('cart')}
+            quantityProducts={dataProductsCart.length}
+          />
         </S.ContentHeader>
         <Tag tagName={dataCoffee.type} grayBackground tagColor />
         <S.ContentHeader>

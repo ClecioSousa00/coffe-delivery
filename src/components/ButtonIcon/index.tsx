@@ -1,24 +1,28 @@
-import theme from '@/styles/theme'
 import * as S from './styles'
 import { ReactNode } from 'react'
-import { TouchableOpacityProps } from 'react-native'
-import {
+import { Pressable, PressableProps } from 'react-native'
+import Animated, {
   interpolateColor,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
 
+import { useTheme } from 'styled-components/native'
+
 export type ButtonIconProps = {
   children: ReactNode
   isSelected: boolean
-} & TouchableOpacityProps
+} & PressableProps
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
 export const ButtonIcon = ({
   children,
   isSelected,
   ...rest
 }: ButtonIconProps) => {
+  const theme = useTheme()
   const buttonStyle = useSharedValue(isSelected ? 1 : 0)
 
   const animatedButtonStyle = useAnimatedStyle(() => {
@@ -38,13 +42,14 @@ export const ButtonIcon = ({
     buttonStyle.value = withTiming(0)
   }
   return (
-    <S.Button
-      {...rest}
-      style={animatedButtonStyle}
+    <AnimatedPressable
+      testID={'button-icon'}
+      style={[animatedButtonStyle, { padding: 8, borderRadius: 6 }]}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
+      {...rest}
     >
       {children}
-    </S.Button>
+    </AnimatedPressable>
   )
 }

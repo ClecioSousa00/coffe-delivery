@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "types": ["@types/jest", "@testing-library/jest-native"]
   },
   "extends": "expo/tsconfig.base"
 }
