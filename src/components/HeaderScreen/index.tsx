@@ -13,7 +13,7 @@ export const HeaderScreen = ({ title }: Props) => {
   const navigation = useNavigation()
   return (
     <S.Header>
-      <S.ButtonBack onPress={() => navigation.goBack()}>
+      <S.ButtonBack testID="button" onPress={() => navigation.goBack()}>
         <ArrowLeft color={theme.colors.gray_100} />
       </S.ButtonBack>
       <S.Title>{title}</S.Title>

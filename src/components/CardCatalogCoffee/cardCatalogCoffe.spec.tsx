@@ -4,11 +4,21 @@ import { CardCatalogCoffee } from '.'
 
 import { mocks } from '../../../__tests__/mock/dataMock'
 import { CustomRender } from '../../../__tests__/utils/CustomRender'
+import { useNavigation } from '@react-navigation/native'
 
 describe('Component: CardCatalogCoffee', () => {
-  it('should pressable button passed id correctly', () => {
-    const mockNavigate = jest.fn()
+  it('check if the navigation has been called', () => {
+    render(<CardCatalogCoffee index={1} data={mocks.product} />, {
+      wrapper: CustomRender,
+    })
+    const button = screen.getByTestId('button-card')
 
+    fireEvent.press(button)
+    const { navigate } = useNavigation()
+    expect(navigate).toHaveBeenCalled()
+  })
+  it('should call onPress with correct id', () => {
+    const mockNavigate = jest.fn()
     render(
       <CardCatalogCoffee
         index={1}
