@@ -8,7 +8,7 @@ import {
 
 import { ButtonIcon } from '.'
 
-import { renderWithThemeProvider } from '../../__tests__/utils/renderWithThemeProvider'
+import { renderWithThemeProvider } from '../../../__tests__/utils/renderWithThemeProvider'
 import theme from '../../styles/theme'
 
 describe('Component: ButtonIcon', () => {

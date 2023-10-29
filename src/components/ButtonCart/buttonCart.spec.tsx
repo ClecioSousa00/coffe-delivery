@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react-native'
 import { ButtonCart } from '.'
-import { renderWithThemeProvider } from '../../__tests__/utils/renderWithThemeProvider'
+import { renderWithThemeProvider } from '../../../__tests__/utils/renderWithThemeProvider'
 
 describe('Component: ButtonCart', () => {
   describe("Should show cart when you don't have any products", () => {

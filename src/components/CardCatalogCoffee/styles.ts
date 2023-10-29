@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components/native'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 import Animated from 'react-native-reanimated'
 
 const animatedTouchableOpacity =
   Animated.createAnimatedComponent(TouchableOpacity)
 
-export const Container = styled(animatedTouchableOpacity)`
+export const Container = styled(
+  animatedTouchableOpacity,
+)<TouchableOpacityProps>`
   width: 312px;
   height: 112px;
 

@@ -3,17 +3,19 @@ import { useNavigation } from '@react-navigation/native'
 import { DataListCoffeeProps } from '@/types/dataListCoffeType'
 import { StackRoutesProps } from '@/routes/stack.routes'
 import { FadeInUp } from 'react-native-reanimated'
+import { TouchableOpacityProps } from 'react-native'
 
 type Props = {
   data: DataListCoffeeProps
   index: number
-}
+} & TouchableOpacityProps
 
-export const CardCatalogCoffee = ({ data, index }: Props) => {
+export const CardCatalogCoffee = ({ data, index, ...rest }: Props) => {
   const navigation = useNavigation<StackRoutesProps>()
 
   return (
     <S.Container
+      testID="button-card"
       entering={FadeInUp.delay(index * 100)}
       onPress={() => navigation.navigate('product', { id: data.id })}
       style={{
@@ -26,6 +28,7 @@ export const CardCatalogCoffee = ({ data, index }: Props) => {
         shadowOpacity: 0.6,
       }}
       activeOpacity={0.7}
+      {...rest}
     >
       <S.ImageCoffee source={data.image} />
       <S.Content>

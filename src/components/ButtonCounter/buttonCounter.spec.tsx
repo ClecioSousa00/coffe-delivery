@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react-native'
 
 import { ButtonCounter } from '.'
-import { renderWithThemeProvider } from '../../__tests__/utils/renderWithThemeProvider'
+import { renderWithThemeProvider } from '../../../__tests__/utils/renderWithThemeProvider'
 
 const handleIncrementMock = jest.fn()
 const handleDecrementMock = jest.fn()

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react-native'
 import { ButtonOptionsSelect } from '.'
-import { renderWithThemeProvider } from '../../__tests__/utils/renderWithThemeProvider'
+import { renderWithThemeProvider } from '../../../__tests__/utils/renderWithThemeProvider'
 import theme from '../../styles/theme'
 
 describe('Component: ButtonOptionsSelect', () => {
