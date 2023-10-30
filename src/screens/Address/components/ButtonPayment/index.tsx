@@ -15,7 +15,7 @@ export const ButtonPayment = ({
   ...rest
 }: ButtonPaymentProps) => {
   return (
-    <S.Button isActive={isActive} {...rest}>
+    <S.Button testID="button" isActive={isActive} {...rest}>
       {children}
       <S.Text>{text}</S.Text>
     </S.Button>
