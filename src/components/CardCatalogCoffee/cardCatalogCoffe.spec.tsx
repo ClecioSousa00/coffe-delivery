@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react-native'
 import React from 'react'
 import { CardCatalogCoffee } from '.'
 
-import { mocks } from '../../../__tests__/mock/dataMock'
+import { mocks } from '../../mock/dataMock'
 import { CustomRender } from '../../../__tests__/utils/CustomRender'
 import { useNavigation } from '@react-navigation/native'
 

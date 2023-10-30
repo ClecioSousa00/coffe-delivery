@@ -21,8 +21,6 @@ describe('Component: ButtonIcon', () => {
     )
 
     const button = screen.queryByTestId('button-icon')
-
-    screen.debug(button)
     // expect(button).toHaveAnimatedStyle({ backgroundColor: 'transparent' })
   })
 })

@@ -28,7 +28,10 @@ export const ToastMessage = ({ props }: ToastProps) => {
         {product.quantity} {singularOrPlural} {product.data.name} de{' '}
         {product.size}ml {'\n'} adicionado ao carrinho
       </S.Text>
-      <S.Button onPress={() => navigation.navigate('cart')}>
+      <S.Button
+        testID="button-navigate"
+        onPress={() => navigation.navigate('cart')}
+      >
         <S.ButtonText>ver</S.ButtonText>
         <ArrowRight size={16} color={theme.colors.purple} />
       </S.Button>
