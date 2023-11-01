@@ -1,19 +1,12 @@
-import React, { ReactNode } from 'react'
-
-import { render, screen } from '@testing-library/react-native'
+import { render, screen } from '../../../__tests__/utils/CustomRender'
 
 import { Tag } from '.'
 
-import { ThemeProvider } from 'styled-components/native'
 import theme from '../../styles/theme'
-
-const Providers: React.FC = ({ children }: { children: ReactNode }) => (
-  <ThemeProvider theme={theme}>{children}</ThemeProvider>
-)
 
 describe('Component: Tag', () => {
   it('Must have a specific background', () => {
-    render(<Tag tagName="tradicional" grayBackground />, { wrapper: Providers })
+    render(<Tag tagName="tradicional" grayBackground />)
 
     const tagComponent = screen.getByTestId('tag')
 
@@ -22,7 +15,7 @@ describe('Component: Tag', () => {
     )
   })
   it('Must have a specific color text', () => {
-    render(<Tag tagName="tradicional" tagColor />, { wrapper: Providers })
+    render(<Tag tagName="tradicional" tagColor />)
 
     const TextTagComponent = screen.getByTestId('text-tag')
 

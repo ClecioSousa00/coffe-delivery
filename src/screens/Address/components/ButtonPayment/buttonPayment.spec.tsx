@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react-native'
-import { ButtonPayment } from '.'
+import { render, screen } from '../../../../../__tests__/utils/CustomRender'
 import { View } from 'react-native'
-import { CustomRender } from '../../../../../__tests__/utils/CustomRender'
+
+import { ButtonPayment } from '.'
 import theme from '../../../../styles/theme'
 
 describe('Component: ButtonPayment', () => {
@@ -10,7 +10,6 @@ describe('Component: ButtonPayment', () => {
       <ButtonPayment text="textMock" isActive>
         <View />
       </ButtonPayment>,
-      { wrapper: CustomRender },
     )
 
     const textElement = screen.getByText('textMock')
@@ -21,7 +20,6 @@ describe('Component: ButtonPayment', () => {
       <ButtonPayment text="textMock" isActive>
         <View />
       </ButtonPayment>,
-      { wrapper: CustomRender },
     )
 
     const button = screen.getByTestId('button')
@@ -32,7 +30,6 @@ describe('Component: ButtonPayment', () => {
       <ButtonPayment text="textMock" isActive={false}>
         <View />
       </ButtonPayment>,
-      { wrapper: CustomRender },
     )
 
     const button = screen.getByTestId('button')

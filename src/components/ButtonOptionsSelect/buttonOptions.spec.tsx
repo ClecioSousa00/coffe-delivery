@@ -1,14 +1,11 @@
-import { render, screen } from '@testing-library/react-native'
+import { render, screen } from '../../../__tests__/utils/CustomRender'
 import { ButtonOptionsSelect } from '.'
-import { renderWithThemeProvider } from '../../../__tests__/utils/renderWithThemeProvider'
 import theme from '../../styles/theme'
 
 describe('Component: ButtonOptionsSelect', () => {
   const sizeProduct = 270
   it('should show default button when it is not selected', () => {
-    render(<ButtonOptionsSelect size={sizeProduct} />, {
-      wrapper: renderWithThemeProvider,
-    })
+    render(<ButtonOptionsSelect size={sizeProduct} />)
     const button = screen.getByTestId('button')
     const buttonText = screen.getByTestId('button-text')
 
@@ -16,9 +13,7 @@ describe('Component: ButtonOptionsSelect', () => {
     expect(buttonText).toHaveStyle({ color: theme.colors.gray_300 })
   })
   it('should show button when it selected', () => {
-    render(<ButtonOptionsSelect isSelected size={sizeProduct} />, {
-      wrapper: renderWithThemeProvider,
-    })
+    render(<ButtonOptionsSelect isSelected size={sizeProduct} />)
     const button = screen.getByTestId('button')
     const buttonText = screen.getByTestId('button-text')
 
