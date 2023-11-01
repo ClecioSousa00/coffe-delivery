@@ -104,7 +104,6 @@ export const Home = () => {
         <Animated.View entering={FadeInDown.delay(300)}>
           <CatalogCoffee />
         </Animated.View>
-        {/* <ToastMessage /> */}
       </S.Container>
     </TouchableWithoutFeedback>
   )
