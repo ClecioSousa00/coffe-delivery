@@ -4,9 +4,9 @@ import { useNavigation } from '@react-navigation/native'
 
 import { StackRoutesProps } from '@/routes/stack.routes'
 
-import { Button } from '@/components/Button'
+import { Button } from '../../components/Button'
 
-import Illustration from '@/assets/Illustration.svg'
+import Illustration from '../../assets/Illustration.svg'
 import { useTheme } from 'styled-components/native'
 import Animated, {
   BounceInLeft,
@@ -33,6 +33,7 @@ export const PurchaseCompleted = () => {
       <Animated.View entering={ZoomInEasyDown.delay(500)}>
         <S.ContainerButton>
           <Button
+            testID="button"
             text="ir para a home"
             color={theme.colors.purple_dark}
             onPress={() => navigation.navigate('home')}

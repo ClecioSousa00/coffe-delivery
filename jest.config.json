@@ -17,5 +17,9 @@
     "./src/types",
     "./src/styles",
     "/__tests__/coverage"
-  ]
+  ],
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest",
+    "^.+\\.svg$": "jest-transformer-svg"
+  }
 }

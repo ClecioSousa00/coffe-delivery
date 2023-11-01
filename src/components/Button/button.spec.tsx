@@ -5,13 +5,6 @@ import {
 } from '../../../__tests__/utils/CustomRender'
 
 import { Button } from '.'
-// import React, { ReactNode } from 'react'
-// import { ThemeProvider } from 'styled-components/native'
-// import theme from '../../styles/theme'
-
-// const Providers: React.FC = ({ children }: { children: ReactNode }) => (
-//   <ThemeProvider theme={theme}>{children}</ThemeProvider>
-// )
 
 const onPressMock = jest.fn()
 

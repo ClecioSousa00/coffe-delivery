@@ -12,7 +12,7 @@ import { useTheme } from 'styled-components/native'
 
 export type ButtonProps = {
   text: string
-  isActive: boolean
+  isActive?: boolean
 } & PressableProps
 
 export const TagCatalogCoffee = ({
