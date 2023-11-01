@@ -1,41 +1,23 @@
 import * as S from './styles'
 import { useNavigation } from '@react-navigation/native'
-import {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-  FadeInRight,
-} from 'react-native-reanimated'
+import { FadeInRight } from 'react-native-reanimated'
 
 import { DataListCoffeeProps } from '@/types/dataListCoffeType'
 import { StackRoutesProps } from '@/routes/stack.routes'
-import { Tag } from '@/components/Tag'
+import { Tag } from '../../../../components/Tag'
+import { PressableProps } from 'react-native'
 
 type Props = {
   data: DataListCoffeeProps
   index: number
-}
+} & PressableProps
 
-export const CardCoffee = ({ data, index }: Props) => {
+export const CardCoffee = ({ data, index, ...rest }: Props) => {
   const navigation = useNavigation<StackRoutesProps>()
-  // const scale = useSharedValue(1)
-
-  // const animatedButtonStyle = useAnimatedStyle(() => {
-  //   return {
-  //     transform: [{ scale: scale.value }],
-  //   }
-  // })
-
-  // const onPressIn = () => {
-  //   scale.value = withTiming(1.1)
-  // }
-
-  // const onPressOut = () => {
-  //   scale.value = withTiming(1)
-  // }
 
   return (
     <S.Container
+      testID="button-card"
       entering={FadeInRight.delay(index * 200)}
       style={{
         elevation: 7,
@@ -47,12 +29,11 @@ export const CardCoffee = ({ data, index }: Props) => {
         shadowOpacity: 0.6,
       }}
       onPress={() => navigation.navigate('product', { id: data.id })}
+      {...rest}
     >
       <S.ImageCoffee source={data.image} />
       <Tag tagName={data.type} />
-      {/* <S.TypeContent>
-        <S.TextType>{data.type}</S.TextType>
-      </S.TypeContent> */}
+
       <S.TextName>{data.name}</S.TextName>
       <S.TextDescription>{data.description}</S.TextDescription>
       <S.ContentPrice>
