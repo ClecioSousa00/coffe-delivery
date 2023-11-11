@@ -8,7 +8,7 @@
     "jest-styled-components",
     "@testing-library/jest-native/extend-expect"
   ],
-  "setupFiles": ["./jest-setup.js"],
+  "setupFiles": ["./__tests__/mocks/react-navigation-setup.js","./__tests__/mocks/async-storage.js"],
   "collectCoverageFrom":[
     "./src/**/*.{ts,tsx}",
     "!./src/**/styles.ts"

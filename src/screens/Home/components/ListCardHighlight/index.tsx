@@ -1,28 +1,20 @@
 import * as S from './styles'
 
 import { View } from 'react-native'
-import { useEffect, useState } from 'react'
-
-import { CardCoffee } from '@/screens/Home/components/CardCoffee'
 
 import { DataListCoffeeProps } from '@/types/dataListCoffeType'
-import { dataListCoffee } from '@/DataProducts/dataListCoffee'
+import { CardCoffee } from '../CardCoffee'
 
 type Props = {
   data: DataListCoffeeProps[]
 }
 
 export const ListCardHighLight = ({ data }: Props) => {
-  const [dataList, setDataList] = useState(dataListCoffee)
-
-  useEffect(() => {
-    setDataList(data)
-  }, [data])
-
   return (
     <S.Container>
       <S.ListCard
-        data={dataList}
+        testID="list-products"
+        data={data}
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item, index }) => (
           <CardCoffee index={index} data={item} />
