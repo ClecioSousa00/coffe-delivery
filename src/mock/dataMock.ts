@@ -1,4 +1,4 @@
-import { DataListCoffeeProps } from '@/types/dataListCoffeType'
+import { DataListCoffeeProps, ProductStorage } from '@/types/dataListCoffeType'
 import coffee from '../../src/assets/Image-1.png'
 import { AddressStorageProps } from '../types/addressStorage'
 
@@ -35,8 +35,17 @@ const address: AddressStorageProps = {
   state: 'PE',
 }
 
+const productsStorage: ProductStorage[] = [
+  {
+    data: product,
+    quantity: 1,
+    size: 227,
+  },
+]
+
 export const mocks = {
   product,
   listProducts,
   address,
+  productsStorage,
 }

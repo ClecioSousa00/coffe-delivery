@@ -6,7 +6,7 @@ import {
   useEffect,
 } from 'react'
 import { ProductStorage } from '@/types/dataListCoffeType'
-import { getAllProductsStorage } from '@/storage/productCart/getAllProductsStorage'
+import { getAllProductsStorage } from '../storage/productCart/getAllProductsStorage'
 
 type ProductContextProps = {
   dataProductsCart: ProductStorage[]
