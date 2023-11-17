@@ -3,12 +3,13 @@
   "transformIgnorePatterns": [
     "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
   ],
-  "testPathIgnorePatterns": ["/node_modules", "/android", "/ios","./__tests__/utils","./__tests__/mock"],
+  "testPathIgnorePatterns": ["/node_modules", "/android", "/ios","./__tests__/utils","./__tests__/mocks","./coverage"],
   "setupFilesAfterEnv": [
     "jest-styled-components",
     "@testing-library/jest-native/extend-expect"
   ],
   "setupFiles": ["./__tests__/mocks/react-navigation-setup.js","./__tests__/mocks/async-storage.js"],
+  
   "collectCoverageFrom":[
     "./src/**/*.{ts,tsx}",
     "!./src/**/styles.ts"
@@ -16,7 +17,7 @@
   "coveragePathIgnorePatterns":[
     "./src/types",
     "./src/styles",
-    "/__tests__/coverage"
+    "./coverage"
   ],
   "transform": {
     "^.+\\.jsx?$": "babel-jest",

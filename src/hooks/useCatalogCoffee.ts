@@ -1,6 +1,9 @@
-import { dataListCoffee } from '@/DataProducts/dataListCoffee'
-import { CatalogDataList, DataListCoffeeProps } from '@/types/dataListCoffeType'
-import { groupDataByType } from '@/utils/groupDatabyType'
+import { dataListCoffee } from '../DataProducts/dataListCoffee'
+import {
+  CatalogDataList,
+  DataListCoffeeProps,
+} from '../types/dataListCoffeType'
+import { groupDataByType } from '../utils/groupDatabyType'
 import { useEffect, useState } from 'react'
 
 const singularToPlural = {

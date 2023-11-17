@@ -1,10 +1,10 @@
 import * as S from './styles'
 import { SectionList, View } from 'react-native'
 
-import { TagCatalogCoffee } from '@/screens/Home/components/TagCatalogCoffee'
-import { CardCatalogCoffee } from '@/components/CardCatalogCoffee'
+import { TagCatalogCoffee } from '../../../../screens/Home/components/TagCatalogCoffee'
+import { CardCatalogCoffee } from '../../../../components/CardCatalogCoffee'
 
-import { UseCatalogCoffee } from '@/hooks/useCatalogCoffee'
+import { UseCatalogCoffee } from '../../../../hooks/useCatalogCoffee'
 
 export const CatalogCoffee = () => {
   const {
@@ -18,13 +18,14 @@ export const CatalogCoffee = () => {
   return (
     <S.Container>
       <S.TitleText>Nossos cafés</S.TitleText>
-      <S.ContainerButtonCategory>
+      <S.ContainerButtonCategory testID="categories">
         {typesCatalogCoffee.map((item) => (
           <TagCatalogCoffee
             key={item}
             text={item}
             isActive={typesCoffee.includes(item)}
             onPress={() => handleSelectedCoffeeCatalog(item)}
+            testID="tag-catalog"
           />
         ))}
       </S.ContainerButtonCategory>
