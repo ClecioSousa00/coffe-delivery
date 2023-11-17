@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import { PRODUCT_STORAGE_KEY } from '@/storage/storageConfig'
+import { PRODUCT_STORAGE_KEY } from '../storageConfig'
 
-import { ProductStorage } from '@/types/dataListCoffeType'
+import { ProductStorage } from '../../types/dataListCoffeType'
 
 import { getAllProductsStorage } from './getAllProductsStorage'
 
