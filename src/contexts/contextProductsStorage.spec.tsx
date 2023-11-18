@@ -16,7 +16,7 @@ describe('Context: contextProductsStorage', () => {
       act(() => result.current.setProductCart(mocks.productsStorage)),
     )
 
-    expect(result.current.dataProductsCart).toHaveLength(1)
+    expect(result.current.dataProductsCart.length).toBeGreaterThan(1)
   })
 
   it('should log an error if there is an issue with AsyncStorage', async () => {

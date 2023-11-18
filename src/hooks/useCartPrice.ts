@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useProductsStorage } from '@/contexts/contextProductsStorage'
-import { ProductStorage } from '@/types/dataListCoffeType'
+import { useProductsStorage } from '../contexts/contextProductsStorage'
+import { ProductStorage } from '../types/dataListCoffeType'
 
 export const useCartPrice = () => {
   const [productsPriceTotal, setProductsPriceTotal] = useState<number | null>(

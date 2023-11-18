@@ -3,6 +3,7 @@ import { mocks } from '../../mock/dataMock'
 import { getAllProductsStorage } from './getAllProductsStorage'
 import { saveProductStorage } from './saveProductStorage'
 import { PRODUCT_STORAGE_KEY } from '../storageConfig'
+import { saveAllProductsStorage } from './saveAllProductStorage'
 
 describe('Storage: getAllProductsStorage', () => {
   beforeEach(async () => {
@@ -15,7 +16,7 @@ describe('Storage: getAllProductsStorage', () => {
   // })
 
   it('should get the products in the storage', async () => {
-    await saveProductStorage(mocks.productsStorage[0])
+    await saveAllProductsStorage(mocks.productsStorage)
     const response = await getAllProductsStorage()
 
     expect(response).toEqual(mocks.productsStorage)

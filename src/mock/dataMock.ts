@@ -41,6 +41,11 @@ const productsStorage: ProductStorage[] = [
     quantity: 1,
     size: 227,
   },
+  {
+    data: product,
+    quantity: 2,
+    size: 114,
+  },
 ]
 
 export const mocks = {
