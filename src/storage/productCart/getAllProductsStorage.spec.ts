@@ -1,8 +1,19 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { mocks } from '../../mock/dataMock'
 import { getAllProductsStorage } from './getAllProductsStorage'
 import { saveProductStorage } from './saveProductStorage'
+import { PRODUCT_STORAGE_KEY } from '../storageConfig'
 
 describe('Storage: getAllProductsStorage', () => {
+  beforeEach(async () => {
+    // Limpa o AsyncStorage antes de cada teste
+    await AsyncStorage.removeItem(PRODUCT_STORAGE_KEY)
+  })
+
+  // afterEach(() => {
+  //   jest.restoreAllMocks()
+  // })
+
   it('should get the products in the storage', async () => {
     await saveProductStorage(mocks.productsStorage[0])
     const response = await getAllProductsStorage()
@@ -13,6 +24,14 @@ describe('Storage: getAllProductsStorage', () => {
   it('should return empty array if there are no products in the storage', async () => {
     const response = await getAllProductsStorage()
 
-    expect(Object.keys(response).length).toBe(0)
+    expect(response).toHaveLength(0)
+  })
+
+  it('should throw an error if there is an issue with AsyncStorage', async () => {
+    jest.spyOn(AsyncStorage, 'getItem').mockImplementationOnce(() => {
+      throw new Error()
+    })
+
+    await expect(getAllProductsStorage()).rejects.toThrowError()
   })
 })

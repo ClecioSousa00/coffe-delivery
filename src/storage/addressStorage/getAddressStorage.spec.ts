@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { getAddressStorage } from './getAddressStorage'
 import { mocks } from '../../mock/dataMock'
 import { saveAddressStorage } from './saveAddressStorage'
@@ -14,5 +15,13 @@ describe('Storage: GetAddressStorage', () => {
     const response = await getAddressStorage()
 
     expect(response).toEqual(mocks.address)
+  })
+
+  it('should throw an error if there is an issue with AsyncStorage', async () => {
+    jest.spyOn(AsyncStorage, 'getItem').mockImplementationOnce(() => {
+      throw new Error()
+    })
+
+    await expect(getAddressStorage()).rejects.toThrowError()
   })
 })

@@ -1,10 +1,10 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { act, renderHook, waitFor } from '@testing-library/react-native'
 import {
   ProductCartProvider,
   useProductsStorage,
 } from './contextProductsStorage'
 import { mocks } from '../mock/dataMock'
-import { getAllProductsStorage } from '../storage/productCart/getAllProductsStorage'
 
 describe('Context: contextProductsStorage', () => {
   it('should add the products to the state', async () => {
@@ -18,19 +18,27 @@ describe('Context: contextProductsStorage', () => {
 
     expect(result.current.dataProductsCart).toHaveLength(1)
   })
-  // it('render', async () => {
-  //   jest.mock('../storage/productCart/getAllProductsStorage', () => ({
-  //     getAllProductsStorage: jest
-  //       .fn()
-  //       .mockRejectedValue('Erro ao buscar dados no storage'),
-  //   }))
 
-  //   const { result } = renderHook(() => useProductsStorage(), {
-  //     wrapper: ProductCartProvider,
-  //   })
+  it('should log an error if there is an issue with AsyncStorage', async () => {
+    const consoleSpy = jest
+      .spyOn(console, 'log')
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      .mockImplementationOnce(() => {})
 
-  //   // expect(console.log).toHaveBeenCalledWith('Erro ao buscar dados no storage')
+    jest.spyOn(AsyncStorage, 'getItem').mockImplementationOnce(() => {
+      throw new Error('Erro ao buscar dados no storage')
+    })
 
-  //   expect(result.current.dataProductsCart).toHaveLength(0)
-  // })
+    const { result } = renderHook(() => useProductsStorage(), {
+      wrapper: ProductCartProvider,
+    })
+
+    await act(() => {
+      waitFor(() => {
+        return result.current.dataProductsCart.length === 0
+      })
+    })
+
+    expect(consoleSpy).toHaveBeenCalledWith('erro ao buscar dados no storage')
+  })
 })
