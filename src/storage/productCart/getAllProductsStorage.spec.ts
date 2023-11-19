@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { mocks } from '../../mock/dataMock'
 import { getAllProductsStorage } from './getAllProductsStorage'
-import { saveProductStorage } from './saveProductStorage'
 import { PRODUCT_STORAGE_KEY } from '../storageConfig'
 import { saveAllProductsStorage } from './saveAllProductStorage'
 

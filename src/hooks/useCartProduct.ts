@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { useProductsStorage } from '@/contexts/contextProductsStorage'
-import { saveAllProductsStorage } from '@/storage/productCart/saveAllProductStorage'
-import { ProductStorage } from '@/types/dataListCoffeType'
+import { useProductsStorage } from '../contexts/contextProductsStorage'
+import { saveAllProductsStorage } from '../storage/productCart/saveAllProductStorage'
+import { ProductStorage } from '../types/dataListCoffeType'
 
 type Props = {
   product: ProductStorage

@@ -37,12 +37,26 @@ const address: AddressStorageProps = {
 
 const productsStorage: ProductStorage[] = [
   {
-    data: product,
+    data: {
+      id: 1,
+      type: 'tradicional',
+      name: 'Expresso Tradicional',
+      description: 'O tradicional café feito com água quente e grãos moídos',
+      price: 8.99,
+      image: coffee,
+    },
     quantity: 1,
     size: 227,
   },
   {
-    data: product,
+    data: {
+      id: 2,
+      type: 'tradicional',
+      name: 'Expresso Americano',
+      description: 'Expresso diluído, menos intenso que o tradicional',
+      price: 7.99,
+      image: coffee,
+    },
     quantity: 2,
     size: 114,
   },
