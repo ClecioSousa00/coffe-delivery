@@ -17,7 +17,8 @@
   "coveragePathIgnorePatterns":[
     "./src/types",
     "./src/styles",
-    "./coverage"
+    "./coverage",
+    "./assets"
   ],
   "transform": {
     "^.+\\.jsx?$": "babel-jest",

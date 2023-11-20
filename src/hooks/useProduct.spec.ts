@@ -61,6 +61,13 @@ describe('Hook: useProduct', () => {
 
     await waitFor(() => expect(result.current.quantityCoffee).toBe(1))
   })
+  it('should not decrease if you have 1 product', async () => {
+    const { result } = renderHook(() => useProduct(mocks.product.id))
+
+    act(() => result.current.handleDecrementCoffee())
+
+    await waitFor(() => expect(result.current.quantityCoffee).toBe(1))
+  })
 
   it('should save a new product in storage and show toast correctly', async () => {
     const { result } = renderHook(() => useProduct(mocks.product.id), {
@@ -82,6 +89,25 @@ describe('Hook: useProduct', () => {
     })
     expect(navigate).toHaveBeenCalled()
   })
+  it('should throw an error if there is an issue with AsyncStorage', async () => {
+    const consoleSpy = jest
+      .spyOn(console, 'log')
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      .mockImplementationOnce(() => {})
+
+    jest.spyOn(AsyncStorage, 'setItem').mockImplementationOnce(() => {
+      throw new Error()
+    })
+
+    const { result } = renderHook(() => useProduct(mocks.product.id), {
+      wrapper: ProductCartProvider,
+    })
+    await waitFor(() => result.current.price !== null)
+
+    await act(async () => result.current.handleAddProductToCart())
+
+    expect(consoleSpy).toBeCalled()
+  })
   it('should not save the product if it is in storage', async () => {
     jest
       .spyOn(AsyncStorage, 'getItem')
@@ -98,25 +124,5 @@ describe('Hook: useProduct', () => {
 
     await waitFor(() => expect(Toast.show).toBeCalledTimes(0))
     expect(navigate).toBeCalledTimes(0)
-  })
-
-  it('should throw an error if there is an issue with AsyncStorage', async () => {
-    const consoleSpy = jest
-      .spyOn(console, 'log')
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      .mockImplementationOnce(() => {})
-
-    jest.spyOn(AsyncStorage, 'setItem').mockImplementationOnce(() => {
-      throw new Error()
-    })
-
-    const { result } = renderHook(() => useProduct(mocks.product.id), {
-      wrapper: ProductCartProvider,
-    })
-    await waitFor(() => result.current.price !== null)
-
-    await act(async () => expect(result.current.handleAddProductToCart()))
-
-    expect(consoleSpy).toBeCalled()
   })
 })
