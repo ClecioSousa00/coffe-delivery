@@ -1,4 +1,4 @@
-import { render, screen } from '../../../__tests__/utils/CustomRender'
+import { render, screen, waitFor } from '../../../__tests__/utils/CustomRender'
 import { View } from 'react-native'
 
 import { ButtonIcon } from '.'
@@ -11,7 +11,10 @@ describe('Component: ButtonIcon', () => {
       </ButtonIcon>,
     )
 
-    const button = screen.queryByTestId('button-icon')
-    // expect(button).toHaveAnimatedStyle({ backgroundColor: 'transparent' })
+    const button = screen.getByTestId('button-icon')
+
+    // await waitFor(() =>
+    //   expect(button).toHaveStyle({ backgroundColor: 'transparent' }),
+    // )
   })
 })

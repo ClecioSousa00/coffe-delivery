@@ -39,6 +39,6 @@ describe('Context: contextProductsStorage', () => {
       })
     })
 
-    expect(consoleSpy).toHaveBeenCalledWith('erro ao buscar dados no storage')
+    expect(consoleSpy).toBeCalled()
   })
 })

@@ -1,7 +1,7 @@
-import { dataListCoffee } from '@/DataProducts/dataListCoffee'
-import { useProductsStorage } from '@/contexts/contextProductsStorage'
-import { StackRoutesProps } from '@/routes/stack.routes'
-import { saveProductStorage } from '@/storage/productCart/saveProductStorage'
+import { dataListCoffee } from '../DataProducts/dataListCoffee'
+import { useProductsStorage } from '../contexts/contextProductsStorage'
+import { StackRoutesProps } from '../routes/stack.routes'
+import { saveProductStorage } from '../storage/productCart/saveProductStorage'
 
 import { DataListCoffeeProps, ProductStorage } from '@/types/dataListCoffeType'
 import { useNavigation } from '@react-navigation/native'

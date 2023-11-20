@@ -2,6 +2,9 @@ import { act, renderHook, waitFor } from '@testing-library/react-native'
 import { useCardProduct } from './useCartProduct'
 import { mocks } from '../mock/dataMock'
 import { ProductCartProvider } from '../contexts/contextProductsStorage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { getAllProductsStorage } from '../storage/productCart/getAllProductsStorage'
+import { saveAllProductsStorage } from '../storage/productCart/saveAllProductStorage'
 
 describe('Hook: useCartProduct', () => {
   it('should check whether a new product has been added', async () => {
@@ -63,6 +66,11 @@ describe('Hook: useCartProduct', () => {
   //     result.current.handleRemoveProduct(product.data.id)
   //   })
 
-  //   await waitFor(() => {})
+  //   await waitFor(() => {
+  //     return result.current.quantity !== product.quantity
+  //   })
+
+  //   const res = await getAllProductsStorage()
+  //   console.log(res)
   // })
 })
