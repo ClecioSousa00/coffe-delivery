@@ -15,7 +15,7 @@ export const ButtonPayment = ({
   ...rest
 }: ButtonPaymentProps) => {
   return (
-    <S.Button testID="button" isActive={isActive} {...rest}>
+    <S.Button accessibilityRole="button" isActive={isActive} {...rest}>
       {children}
       <S.Text>{text}</S.Text>
     </S.Button>

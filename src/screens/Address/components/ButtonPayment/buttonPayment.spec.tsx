@@ -5,34 +5,35 @@ import { ButtonPayment } from '.'
 import theme from '../../../../styles/theme'
 
 describe('Component: ButtonPayment', () => {
+  const buttonName = 'nameMock'
   it('should show the text passed correctly', () => {
     render(
-      <ButtonPayment text="textMock" isActive>
+      <ButtonPayment text={buttonName} isActive>
         <View />
       </ButtonPayment>,
     )
 
-    const textElement = screen.getByText('textMock')
+    const textElement = screen.getByText(buttonName)
     expect(textElement).toBeTruthy()
   })
   it('should show the border of the button when isActive is true', () => {
     render(
-      <ButtonPayment text="textMock" isActive>
+      <ButtonPayment text={buttonName} isActive>
         <View />
       </ButtonPayment>,
     )
 
-    const button = screen.getByTestId('button')
+    const button = screen.getByRole('button', { name: buttonName })
     expect(button).toHaveStyle({ borderColor: theme.colors.purple })
   })
   it('should not show the border of the button when isActive is false', () => {
     render(
-      <ButtonPayment text="textMock" isActive={false}>
+      <ButtonPayment text={buttonName} isActive={false}>
         <View />
       </ButtonPayment>,
     )
 
-    const button = screen.getByTestId('button')
+    const button = screen.getByRole('button', { name: buttonName })
     expect(button).not.toHaveStyle({ borderColor: theme.colors.purple })
   })
 })

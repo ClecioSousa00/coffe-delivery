@@ -3,7 +3,6 @@ import { useCep } from './useCep'
 import { mocks } from '../mock/dataMock'
 import { useNavigation } from '@react-navigation/native'
 import { getAddressStorage } from '../storage/addressStorage/getAddressStorage'
-import { AddressStorageProps } from '@/types/addressStorage'
 
 describe('Hook: useCep', () => {
   it('should save the city and state in AsyncStorage', async () => {
@@ -16,5 +15,7 @@ describe('Hook: useCep', () => {
 
     expect(response.city).toEqual(mocks.addressMock.city)
     expect(navigate).toHaveBeenCalledWith('purchaseCompleted')
+
+    // console.log(result.current.control._updateFormState({}))
   })
 })

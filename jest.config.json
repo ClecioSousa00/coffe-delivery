@@ -6,7 +6,8 @@
   "testPathIgnorePatterns": ["/node_modules", "/android", "/ios","./__tests__/utils","./__tests__/mocks","./coverage"],
   "setupFilesAfterEnv": [
     "jest-styled-components",
-    "@testing-library/jest-native/extend-expect"
+    "@testing-library/jest-native/extend-expect",
+    "./__tests__/mocks/react-hook-form-setup.js"
   ],
   "setupFiles": ["./__tests__/mocks/react-navigation-setup.js","./__tests__/mocks/async-storage.js"],
   
