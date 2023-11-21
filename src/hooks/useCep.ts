@@ -1,13 +1,19 @@
-import { StackRoutesProps } from '@/routes/stack.routes'
-import { userAddressSchema } from '@/screens/Address/schema'
-import { AddressProps, FormProps } from '@/screens/Address/types'
-import { saveAddressStorage } from '@/storage/addressStorage/saveAddressStorage'
-import { ZipCodeMask } from '@/utils/masks/zipCodeMask'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useNavigation } from '@react-navigation/native'
 import axios from 'axios'
 import { useCallback, useEffect } from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { useForm } from 'react-hook-form'
+
+import { StackRoutesProps } from '../routes/stack.routes'
+
+import { ZipCodeMask } from '../utils/masks/zipCodeMask'
+
+import { zodResolver } from '@hookform/resolvers/zod'
+
+import { userAddressSchema } from '../screens/Address/schema'
+
+import { AddressProps, FormProps } from '../screens/Address/types'
+
+import { saveAddressStorage } from '../storage/addressStorage/saveAddressStorage'
 
 export const useCep = () => {
   const {

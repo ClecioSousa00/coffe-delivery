@@ -1,6 +1,7 @@
 import { DataListCoffeeProps, ProductStorage } from '@/types/dataListCoffeType'
 import coffee from '../../src/assets/Image-1.png'
 import { AddressStorageProps } from '../types/addressStorage'
+import { FormProps } from '@/screens/Address/types'
 
 const product: DataListCoffeeProps = {
   id: 1,
@@ -62,9 +63,19 @@ const productsStorage: ProductStorage[] = [
   },
 ]
 
+const addressMock: FormProps = {
+  city: 'São Paulo',
+  district: 'Sé',
+  number: '11',
+  state: 'SP',
+  street: 'lado ímpar',
+  zipCode: '01001000',
+}
+
 export const mocks = {
   product,
   listProducts,
   address,
   productsStorage,
+  addressMock,
 }
