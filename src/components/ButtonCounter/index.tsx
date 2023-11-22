@@ -20,10 +20,14 @@ export const ButtonCounter = ({
 
   return (
     <S.ContentInput testID="button-counter">
-      <ButtonIcon isSelected={false} onPress={handleDecrement}>
+      <ButtonIcon
+        testID="button-decrement"
+        isSelected={false}
+        onPress={handleDecrement}
+      >
         <Minus color={theme.colors.purple} size={20} weight="bold" />
       </ButtonIcon>
-      <S.InputNumber>{quantity}</S.InputNumber>
+      <S.InputNumber testID="button-quantity">{quantity}</S.InputNumber>
       <ButtonIcon
         testID="button-increment"
         isSelected={false}

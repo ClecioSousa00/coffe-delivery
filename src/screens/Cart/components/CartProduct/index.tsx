@@ -4,10 +4,10 @@ import { ButtonCounter } from '../../../../components/ButtonCounter'
 
 import { useTheme } from 'styled-components/native'
 import { ButtonIcon } from '../../../../components/ButtonIcon'
-import { ProductStorage } from '@/types/dataListCoffeType'
+import { ProductStorage } from '../../../../types/dataListCoffeType'
 
-import { useCardProduct } from '@/hooks/useCartProduct'
-import { SwipeableButton } from '@/screens/Cart/components/SwipeableButton'
+import { useCardProduct } from '../../../../hooks/useCartProduct'
+import { SwipeableButton } from '../../../../screens/Cart/components/SwipeableButton'
 import { Swipeable } from 'react-native-gesture-handler'
 
 type Props = {
@@ -48,6 +48,7 @@ export const CartProduct = ({ product, handleTotalPrice }: Props) => {
               handleIncrement={() => handleIncrementCoffee()}
             />
             <ButtonIcon
+              testID="button-remove"
               isSelected
               onPress={() => handleRemoveProduct(product.data.id)}
             >
