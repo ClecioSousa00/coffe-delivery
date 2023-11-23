@@ -1,0 +1,38 @@
+// import axios from 'axios'
+// import { mocks } from '../../mock/dataMock'
+// import {
+//   act,
+//   fireEvent,
+//   render,
+//   screen,
+//   waitFor,
+// } from '../../../__tests__/utils/CustomRender'
+// import { Address } from '.'
+// import { getAddressStorage } from '../../storage/addressStorage/getAddressStorage'
+
+// describe('Screen: Address', () => {
+//   it('should search for the address when typing the Zip code', async () => {
+//     // const spyFn = jest.spyOn(axios, 'get').mockImplementation(() =>
+//     //   Promise.resolve({
+//     //     data: mocks.addressMock,
+//     //   }),
+//     // )
+
+//     const spyFn = jest.spyOn(axios, 'get').mockResolvedValue({
+//       data: mocks.addressMock,
+//     })
+
+//     const zipCodeMock = mocks.addressMock.zipCode
+//     const cityMock = mocks.addressMock.city
+//     render(<Address />)
+
+//     const zipCodeInput = screen.getByPlaceholderText(/cep/i)
+//     const control = await screen.getByTestId('zipCode').props.control
+
+//     fireEvent.changeText(zipCodeInput, zipCodeMock)
+
+//     await waitFor(() => {
+//       expect(control.field.city.value).toBe(cityMock)
+//     })
+//   })
+// })

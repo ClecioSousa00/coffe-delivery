@@ -1,5 +1,4 @@
 import * as S from './styles'
-
 import React, { useState } from 'react'
 import {
   Keyboard,
@@ -8,7 +7,8 @@ import {
   View,
 } from 'react-native'
 
-import { HeaderScreen } from '@/components/HeaderScreen'
+import { useTheme } from 'styled-components/native'
+
 import {
   Bank,
   CreditCard,
@@ -17,13 +17,13 @@ import {
   Money,
 } from 'phosphor-react-native'
 
-import { Input } from '@/screens/Address/components/Form/Input'
-import { ButtonPayment } from '@/screens/Address/components/ButtonPayment'
-import { Button } from '@/components/Button'
+import { Input } from '../../screens/Address/components/Form/Input'
+import { ButtonPayment } from '../../screens/Address/components/ButtonPayment'
 
-import { useTheme } from 'styled-components/native'
+import { Button } from '../../components/Button'
+import { HeaderScreen } from '../../components/HeaderScreen'
 
-import { useCep } from '@/hooks/useCep'
+import { useCep } from '../../hooks/useCep'
 
 export const Address = () => {
   const theme = useTheme()
@@ -151,6 +151,7 @@ export const Address = () => {
           }}
         >
           <Button
+            accessibilityRole="button"
             onPress={handleSubmit(handleSubmitForm)}
             text="Confirmar Entrega"
             color={theme.colors.yellow_dark}
