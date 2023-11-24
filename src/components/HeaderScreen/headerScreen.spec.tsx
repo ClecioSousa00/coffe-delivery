@@ -21,6 +21,6 @@ describe('Component: HeaderScreen', () => {
 
     fireEvent.press(button)
     const { goBack } = useNavigation()
-    expect(goBack).toHaveBeenCalled()
+    expect(goBack).toHaveBeenCalledTimes(1)
   })
 })

@@ -21,6 +21,7 @@ export const CatalogCoffee = () => {
       <S.ContainerButtonCategory testID="categories">
         {typesCatalogCoffee.map((item) => (
           <TagCatalogCoffee
+            accessibilityRole="button"
             key={item}
             text={item}
             isActive={typesCoffee.includes(item)}
@@ -31,6 +32,7 @@ export const CatalogCoffee = () => {
       </S.ContainerButtonCategory>
 
       <SectionList
+        testID="section-list"
         sections={dataCatalogCoffee}
         keyExtractor={(item) => String(item.id)}
         contentContainerStyle={{ paddingBottom: 32 }}

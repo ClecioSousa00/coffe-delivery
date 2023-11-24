@@ -1,7 +1,7 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { renderHook, act, waitFor } from '@testing-library/react-native'
 import { useCartPrice } from './useCartPrice'
 import { ProductCartProvider } from '../contexts/contextProductsStorage'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { mocks } from '../mock/dataMock'
 
 const totalPriceProductsMock = () => {
@@ -48,21 +48,3 @@ describe('Hook: useCartPrice', () => {
     expect(result.current.productsPriceTotal).toBe(newPriceTotal)
   })
 })
-
-// describe('Hook: useCartPrice', () => {
-//   it('should initialize with productsPriceTotal as null', async () => {
-//     jest
-//       .spyOn(AsyncStorage, 'getItem')
-//       .mockResolvedValue(JSON.stringify(mocks.productsStorage))
-
-//     await waitFor(async () => {
-//       const { result } = renderHook(() => useCartPrice(), {
-//         wrapper: ProductCartProvider,
-//       })
-
-//       await waitFor(() => result.current.productsPriceTotal !== null)
-
-//       console.log(result.current.productsPriceTotal)
-//     })
-//   })
-// })
