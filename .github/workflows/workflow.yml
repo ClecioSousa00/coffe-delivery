@@ -19,6 +19,6 @@ jobs:
           node-version: 18.x
       - uses: expo/expo-github-action@v8
         with:
-          expo-version: 49.x
+          expo-version: 4.x
       - run: npm install
       - run: npm run test
