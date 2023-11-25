@@ -1,4 +1,4 @@
-name: Continuos Integration
+name: Continuous Integration
 
 on:
   push:
@@ -10,15 +10,15 @@ on:
 
 jobs:
   publish:
-    name: continuos-integration
+    name: continuous-integration
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
-        witch:
+        with:
           node-version: 18.x
       - uses: expo/expo-github-action@v8
-        witch:
+        with:
           expo-version: 49.x
       - run: npm install
       - run: npm run test
