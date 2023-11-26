@@ -3,7 +3,8 @@
 ## Projeto
 
 Este Projeto é um desafio que pode ser econtrado no figma da [rocketseat](https://www.figma.com/community/file/1245817631079079109). 
-O Coffee Delivery é uma aplicação móvel que permite aos usuários pedirem café para entrega. Além disso eu criei outra tela que para o usuário fornecer um endereço de entrega.
+O Coffee Delivery é uma aplicação móvel que permite aos usuários pedirem café para entrega. Além disso eu criei outra tela que para o usuário fornecer um endereço de entrega. Pare este projeto
+apliquei Testes Unitários e auomatizei eles com o GitHub actions, sempre que um Pull request ou um push ocorra na branch principal.
 
 ## Funcionalidades
 
@@ -25,6 +26,8 @@ O Coffee Delivery é uma aplicação móvel que permite aos usuários pedirem ca
 * Zod
 * Async Storage
 * React Native Reanimated
+* Jest
+* React-Native-Testing-Library
 
 ### Telas
 
@@ -40,7 +43,7 @@ O Coffee Delivery é uma aplicação móvel que permite aos usuários pedirem ca
 $ git clone https://github.com/ClecioSousa00/appMova.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd appMova
+$ cd coffe-delivery
 
 # Instale as dependências
 $ npm install
